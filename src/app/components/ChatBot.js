@@ -187,7 +187,7 @@ export default function AIChatbot() {
       }`}
     >
       <div className="bg-white rounded-2xl shadow-2xl flex flex-col h-full overflow-hidden">
-        {/* Header */}
+        {/* nav bar */}
         <div className="bg-linear-to-r from-pink-500 to-purple-500 p-4">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center space-x-3">
