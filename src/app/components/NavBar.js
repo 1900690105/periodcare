@@ -2,11 +2,10 @@
 import { Globe, Heart, Menu, X } from "lucide-react";
 import React, { useState } from "react";
 
-function NavBar() {
+function NavBar({ setLanguage, language }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [language, setLanguage] = useState("English");
 
-  const languages = ["English", "हिंदी", "मराठी", "தமிழ்", "বাংলা", "తెలుగు"];
+  const languages = ["en", "hi", "मराठी", "தமிழ்", "বাংলা", "తెలుగు"];
   return (
     <>
       <nav className="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-50">
