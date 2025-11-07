@@ -123,7 +123,7 @@ export default function PeriodCareHero() {
             {/* Main Image Container */}
             <div className="relative">
               {/* Placeholder Image - Replace with your actual image */}
-              <div className="relative bg-linear-to-br from-pink-100 to-purple-100 rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
+              <div className="relative   overflow-hidden transform hover:scale-105 transition-transform duration-300">
                 <Image
                   src="/heroimg2.png"
                   alt="Woman using PeriodCare app"
