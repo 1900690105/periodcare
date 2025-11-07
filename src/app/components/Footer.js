@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import {
   Heart,
@@ -9,7 +10,9 @@ import {
   Youtube,
   Globe,
   ChevronRight,
+  InstagramIcon,
 } from "lucide-react";
+import Link from "next/link";
 
 export default function PeriodCareFooter({ language, setLanguage }) {
   const [hoveredLink, setHoveredLink] = useState(null);
@@ -97,21 +100,25 @@ export default function PeriodCareFooter({ language, setLanguage }) {
       icon: <Instagram className="w-5 h-5" />,
       name: "Instagram",
       color: "hover:text-pink-500",
+      link: "https://youtu.be/nofxiiMEqeM?si=FQOUoxFGDIvCQ-LI",
     },
     {
       icon: <Facebook className="w-5 h-5" />,
       name: "Facebook",
       color: "hover:text-blue-600",
+      link: "https://youtu.be/nofxiiMEqeM?si=FQOUoxFGDIvCQ-LI",
     },
     {
       icon: <Twitter className="w-5 h-5" />,
       name: "Twitter",
       color: "hover:text-sky-500",
+      link: "https://youtu.be/nofxiiMEqeM?si=FQOUoxFGDIvCQ-LI",
     },
     {
       icon: <Youtube className="w-5 h-5" />,
       name: "YouTube",
       color: "hover:text-red-600",
+      link: "https://youtu.be/nofxiiMEqeM?si=FQOUoxFGDIvCQ-LI",
     },
   ];
 
@@ -150,8 +157,8 @@ export default function PeriodCareFooter({ language, setLanguage }) {
             <ul className="space-y-3">
               {content[language].quickLinks.links.map((link, index) => (
                 <li key={index}>
-                  <a
-                    href="#"
+                  <Link
+                    href={"#"}
                     onMouseEnter={() => setHoveredLink(`quick-${index}`)}
                     onMouseLeave={() => setHoveredLink(null)}
                     className="text-gray-600 hover:text-pink-600 transition-all duration-300 inline-block group"
@@ -165,7 +172,7 @@ export default function PeriodCareFooter({ language, setLanguage }) {
                     >
                       {link}
                     </span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -214,14 +221,15 @@ export default function PeriodCareFooter({ language, setLanguage }) {
               </p>
               <div className="flex gap-3">
                 {socialLinks.map((social, index) => (
-                  <a
-                    key={index}
-                    href="#"
+                  <Link
+                    key={`${social.link}-${index}`}
+                    href={social.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`bg-white rounded-full p-3 shadow-md hover:shadow-lg transition-all hover:-translate-y-1 text-gray-600 ${social.color}`}
-                    aria-label={social.name}
                   >
                     {social.icon}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>

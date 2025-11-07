@@ -16,23 +16,23 @@ function NavBar({ setLanguage, language }) {
             {/* Logo */}
             <div className="flex items-center space-x-2">
               <Link href={"/"}>
-                <Image src={"/logo2.png"} alt="logo" width={50} height={50} />
+                <Image src={"/logo2.png"} alt="logo" width={60} height={60} />
               </Link>
             </div>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
               <Link
-                href="#features"
-                className="text-gray-700 hover:text-pink-600 transition-colors font-medium"
-              >
-                Features
-              </Link>
-              <Link
                 href={"/learn"}
                 className="text-gray-700 hover:text-pink-600 transition-colors font-medium"
               >
                 Education
+              </Link>
+              <Link
+                href={"/community"}
+                className="text-gray-700 hover:text-pink-600 transition-colors font-medium"
+              >
+                Community
               </Link>
               <Link
                 href="#about"
@@ -90,10 +90,10 @@ function NavBar({ setLanguage, language }) {
           {mobileMenuOpen && (
             <div className="md:hidden py-4 space-y-4 border-t border-pink-100">
               <Link
-                href="#features"
+                href={"/community"}
                 className="block text-gray-700 hover:text-pink-600 transition-colors font-medium py-2"
               >
-                Features
+                Community
               </Link>
               <Link
                 href={"/learn"}

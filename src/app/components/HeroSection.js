@@ -65,9 +65,8 @@ export default function PeriodCareHero() {
 
             {/* Subtext */}
             <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl">
-              AI-driven menstrual health guidance in your language — online or
-              offline. Get personalized support, education, and care anytime,
-              anywhere.
+              AI-driven menstrual health guidance in your language. Get
+              personalized support, education, and care anytime, anywhere.
             </p>
 
             {/* CTA Buttons */}
@@ -128,8 +127,8 @@ export default function PeriodCareHero() {
                 <Image
                   src="/heroimg.png"
                   alt="Woman using PeriodCare app"
-                  width={600}
-                  height={400}
+                  width={700}
+                  height={700}
                 />
               </div>
 

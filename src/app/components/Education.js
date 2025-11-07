@@ -8,6 +8,7 @@ import {
   BookOpen,
   Play,
 } from "lucide-react";
+import Image from "next/image";
 
 export default function EducationAwareness() {
   const [hoveredCard, setHoveredCard] = useState(null);
@@ -140,19 +141,14 @@ export default function EducationAwareness() {
                 >
                   {/* Card Header with Icon */}
                   <div className={`${card.bgColor} p-8 pb-6 relative`}>
-                    <div className="text-5xl mb-4 transition-transform duration-500 group-hover:scale-110">
-                      {card.emoji}
-                    </div>
                     <div
-                      className={`${
-                        card.iconBg
-                      } w-16 h-16 rounded-2xl flex items-center justify-center shadow-md mb-4 transition-all duration-500 ${
-                        isHovered ? "rotate-12 scale-110" : ""
-                      }`}
+                      className={`${card.iconBg} w-16 h-16 rounded-2xl flex items-center justify-center shadow-md mb-4 transition-all duration-500 `}
                     >
-                      <Icon
-                        className={`w-8 h-8 ${card.iconColor}`}
-                        strokeWidth={2}
+                      <Image
+                        src={`/img/educard${card.id}.png`}
+                        alt="bg image"
+                        width={200}
+                        height={200}
                       />
                     </div>
                     <h3 className="text-2xl font-bold text-gray-800 mb-2">
