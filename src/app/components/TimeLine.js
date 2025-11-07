@@ -88,7 +88,7 @@ export default function JourneyTimeline() {
 
         <div className="relative">
           {/* Vertical timeline line - hidden on mobile */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-pink-200 via-purple-200 to-orange-200 hidden md:block"></div>
+          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-linear-to-b from-pink-200 via-purple-200 to-orange-200 hidden md:block"></div>
 
           <div className="space-y-6 sm:space-y-8 lg:space-y-12">
             {steps.map((step, index) => {
@@ -125,7 +125,7 @@ export default function JourneyTimeline() {
                         <div className="flex-1 text-center sm:text-left">
                           <div className="flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
                             <span
-                              className={`inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-r ${step.color} text-white text-sm font-bold shadow-sm`}
+                              className={`inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-linear-to-r ${step.color} text-white text-sm font-bold shadow-sm`}
                             >
                               {step.id}
                             </span>

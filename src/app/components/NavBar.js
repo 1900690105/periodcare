@@ -1,5 +1,7 @@
 "use client";
 import { Globe, Heart, Menu, X } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import React, { useState } from "react";
 
 function NavBar({ setLanguage, language }) {
@@ -13,40 +15,37 @@ function NavBar({ setLanguage, language }) {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div className="flex items-center space-x-2">
-              <div className="bg-linear-to-br from-pink-400 to-coral-400 p-2 rounded-full">
-                <Heart className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-2xl font-bold text-pink-600">
-                PeriodCare
-              </span>
+              <Link href={"/"}>
+                <Image src={"/logo2.png"} alt="logo" width={50} height={50} />
+              </Link>
             </div>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              <a
+              <Link
                 href="#features"
                 className="text-gray-700 hover:text-pink-600 transition-colors font-medium"
               >
                 Features
-              </a>
-              <a
-                href="#education"
+              </Link>
+              <Link
+                href={"/learn"}
                 className="text-gray-700 hover:text-pink-600 transition-colors font-medium"
               >
                 Education
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#about"
                 className="text-gray-700 hover:text-pink-600 transition-colors font-medium"
               >
                 About
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#contact"
                 className="text-gray-700 hover:text-pink-600 transition-colors font-medium"
               >
                 Contact
-              </a>
+              </Link>
 
               {/* Language Selector */}
               <div className="relative">
@@ -65,7 +64,10 @@ function NavBar({ setLanguage, language }) {
                 <Globe className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-pink-600 pointer-events-none" />
               </div>
 
-              <button className="bg-pink-500  text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+              <button
+                onClick={() => (window.location.href = "/createaccount")}
+                className="bg-pink-500  text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+              >
                 Sign In
               </button>
             </div>
@@ -87,30 +89,30 @@ function NavBar({ setLanguage, language }) {
           {/* Mobile Menu */}
           {mobileMenuOpen && (
             <div className="md:hidden py-4 space-y-4 border-t border-pink-100">
-              <a
+              <Link
                 href="#features"
                 className="block text-gray-700 hover:text-pink-600 transition-colors font-medium py-2"
               >
                 Features
-              </a>
-              <a
-                href="#education"
+              </Link>
+              <Link
+                href={"/learn"}
                 className="block text-gray-700 hover:text-pink-600 transition-colors font-medium py-2"
               >
                 Education
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#about"
                 className="block text-gray-700 hover:text-pink-600 transition-colors font-medium py-2"
               >
                 About
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#contact"
                 className="block text-gray-700 hover:text-pink-600 transition-colors font-medium py-2"
               >
                 Contact
-              </a>
+              </Link>
 
               <select
                 value={language}
