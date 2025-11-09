@@ -10,14 +10,100 @@ import {
   Droplets,
 } from "lucide-react";
 
-export default function StateSection() {
-  const [language, setLanguage] = useState("English");
+export default function StateSection({ language }) {
   const [counters, setCounters] = useState({
     awareness: 0,
     absenteeism: 0,
     hygiene: 0,
     languages: 0,
   });
+
+  const translations = {
+    en: {
+      mainTitle: "Creating Change That Matters",
+      mainSubtitle:
+        "Real impact through education, technology, and community engagement",
+      stats: {
+        awareness: {
+          title: "Awareness Increase",
+          subtitle: "In menstrual health knowledge",
+        },
+        absenteeism: {
+          title: "Absenteeism Reduced",
+          subtitle: "More girls staying in school",
+        },
+        hygiene: {
+          title: "Hygiene Improved",
+          subtitle: "Better health practices adopted",
+        },
+        languages: {
+          title: "Languages Supported",
+          subtitle: "Accessible to diverse communities",
+        },
+      },
+      additionalMetrics: {
+        women: "Women Empowered",
+        communities: "Communities Reached",
+        satisfaction: "User Satisfaction",
+      },
+    },
+    hi: {
+      mainTitle: "महत्वपूर्ण बदलाव बना रहे हैं",
+      mainSubtitle:
+        "शिक्षा, प्रौद्योगिकी और सामुदायिक भागीदारी के माध्यम से वास्तविक प्रभाव",
+      stats: {
+        awareness: {
+          title: "जागरूकता में वृद्धि",
+          subtitle: "मासिक धर्म स्वास्थ्य ज्ञान में",
+        },
+        absenteeism: {
+          title: "अनुपस्थिति में कमी",
+          subtitle: "अधिक लड़कियां स्कूल में रह रही हैं",
+        },
+        hygiene: {
+          title: "स्वच्छता में सुधार",
+          subtitle: "बेहतर स्वास्थ्य प्रथाएं अपनाई गईं",
+        },
+        languages: {
+          title: "भाषाएं समर्थित",
+          subtitle: "विविध समुदायों के लिए सुलभ",
+        },
+      },
+      additionalMetrics: {
+        women: "महिलाएं सशक्त",
+        communities: "समुदाय तक पहुंचे",
+        satisfaction: "उपयोगकर्ता संतुष्टि",
+      },
+    },
+    mr: {
+      mainTitle: "महत्त्वपूर्ण बदल घडवत आहोत",
+      mainSubtitle:
+        "शिक्षण, तंत्रज्ञान आणि सामुदायिक सहभागाद्वारे वास्तविक प्रभाव",
+      stats: {
+        awareness: {
+          title: "जागरूकतेत वाढ",
+          subtitle: "मासिक पाळी आरोग्य ज्ञानात",
+        },
+        absenteeism: {
+          title: "अनुपस्थिती कमी",
+          subtitle: "अधिक मुली शाळेत राहत आहेत",
+        },
+        hygiene: {
+          title: "स्वच्छतेत सुधारणा",
+          subtitle: "चांगल्या आरोग्य पद्धती स्वीकारल्या",
+        },
+        languages: {
+          title: "भाषा समर्थित",
+          subtitle: "विविध समुदायांसाठी प्रवेशयोग्य",
+        },
+      },
+      additionalMetrics: {
+        women: "महिला सशक्त",
+        communities: "समुदायांपर्यंत पोहोचलो",
+        satisfaction: "वापरकर्ता समाधान",
+      },
+    },
+  };
 
   // Animated counters
   useEffect(() => {
@@ -60,7 +146,7 @@ export default function StateSection() {
     return () => clearInterval(timer);
   }, []);
 
-  const languages = ["English", "हिंदी", "मराठी", "தமிழ்", "বাংলা", "తెలుగు"];
+  const t = translations[language];
 
   return (
     <div>
@@ -69,11 +155,10 @@ export default function StateSection() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">
-              Creating Change That Matters
+              {t.mainTitle}
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Real impact through education, technology, and community
-              engagement
+              {t.mainSubtitle}
             </p>
           </div>
 
@@ -88,10 +173,10 @@ export default function StateSection() {
                   {counters.awareness}%
                 </div>
                 <div className="text-gray-700 font-semibold mb-3">
-                  Awareness Increase
+                  {t.stats.awareness.title}
                 </div>
                 <div className="text-sm text-gray-500">
-                  In menstrual health knowledge
+                  {t.stats.awareness.subtitle}
                 </div>
               </div>
               <div className="mt-6">
@@ -114,10 +199,10 @@ export default function StateSection() {
                   {counters.absenteeism}%
                 </div>
                 <div className="text-gray-700 font-semibold mb-3">
-                  Absenteeism Reduced
+                  {t.stats.absenteeism.title}
                 </div>
                 <div className="text-sm text-gray-500">
-                  More girls staying in school
+                  {t.stats.absenteeism.subtitle}
                 </div>
               </div>
               <div className="mt-6">
@@ -140,10 +225,10 @@ export default function StateSection() {
                   {counters.hygiene}%
                 </div>
                 <div className="text-gray-700 font-semibold mb-3">
-                  Hygiene Improved
+                  {t.stats.hygiene.title}
                 </div>
                 <div className="text-sm text-gray-500">
-                  Better health practices adopted
+                  {t.stats.hygiene.subtitle}
                 </div>
               </div>
               <div className="mt-6">
@@ -166,10 +251,10 @@ export default function StateSection() {
                   {counters.languages}+
                 </div>
                 <div className="text-gray-700 font-semibold mb-3">
-                  Languages Supported
+                  {t.stats.languages.title}
                 </div>
                 <div className="text-sm text-gray-500">
-                  Accessible to diverse communities
+                  {t.stats.languages.subtitle}
                 </div>
               </div>
               <div className="mt-6">
@@ -190,14 +275,16 @@ export default function StateSection() {
                 <div className="text-4xl font-bold text-purple-600 mb-2">
                   10,000+
                 </div>
-                <div className="text-gray-600 font-medium">Women Empowered</div>
+                <div className="text-gray-600 font-medium">
+                  {t.additionalMetrics.women}
+                </div>
               </div>
               <div>
                 <div className="text-4xl font-bold text-pink-600 mb-2">
                   500+
                 </div>
                 <div className="text-gray-600 font-medium">
-                  Communities Reached
+                  {t.additionalMetrics.communities}
                 </div>
               </div>
               <div>
@@ -205,7 +292,7 @@ export default function StateSection() {
                   95%
                 </div>
                 <div className="text-gray-600 font-medium">
-                  User Satisfaction
+                  {t.additionalMetrics.satisfaction}
                 </div>
               </div>
             </div>

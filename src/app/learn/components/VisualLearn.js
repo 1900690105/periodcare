@@ -11,6 +11,7 @@ import {
   Video,
 } from "lucide-react";
 import { useState } from "react";
+import VideoPlayer from "./YoutubeVideo";
 
 function VisualLearningCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -29,7 +30,7 @@ function VisualLearningCarousel() {
     },
     {
       id: 2,
-      type: "video",
+      type: "infographic",
       title: "Period Symptoms Guide",
       description: "Common symptoms and how to manage them",
       duration: "3:45 min",
@@ -49,7 +50,7 @@ function VisualLearningCarousel() {
     },
     {
       id: 4,
-      type: "video",
+      type: "infographic",
       title: "Nutrition During Periods",
       description: "What to eat and avoid during your cycle",
       duration: "4:20 min",
@@ -98,13 +99,12 @@ function VisualLearningCarousel() {
             <div className="grid lg:grid-cols-2">
               {/* Left: Visual Content */}
               <div
-                className={`bg-linear-to-br ${currentItem.color} p-8 lg:p-12 flex items-center justify-center relative min-h-[400px] lg:min-h-[500px]`}
+                className={`bg-linear-to-br ${currentItem.color} p-8 lg:p-12 flex items-center justify-center relative min-h-[250px] lg:min-h-[500px]`}
               >
                 {currentItem.type === "infographic" ? (
                   // Infographic SVG
                   <div className="w-full h-full flex items-center justify-center">
                     {currentSlide === 0 && (
-                      // Menstrual Cycle Stages Infographic
                       <svg
                         viewBox="0 0 300 300"
                         className="w-full h-full max-w-md"
@@ -216,95 +216,10 @@ function VisualLearningCarousel() {
                         </text>
                       </svg>
                     )}
-                    {currentSlide === 2 && (
-                      // Hygiene Guide Infographic
-                      <svg
-                        viewBox="0 0 300 300"
-                        className="w-full h-full max-w-md"
-                      >
-                        <rect
-                          x="50"
-                          y="50"
-                          width="200"
-                          height="200"
-                          rx="20"
-                          fill="white"
-                          opacity="0.9"
-                        />
-                        <circle cx="150" cy="100" r="30" fill="#38BDF8" />
-                        <text x="150" y="110" fontSize="30" textAnchor="middle">
-                          1
-                        </text>
-                        <text
-                          x="150"
-                          y="145"
-                          fontSize="14"
-                          textAnchor="middle"
-                          fill="#333"
-                        >
-                          Wash hands
-                        </text>
-                        <path
-                          d="M150 150 L150 165"
-                          stroke="#38BDF8"
-                          strokeWidth="3"
-                          markerEnd="url(#arrowblue)"
-                        />
-                        <circle cx="150" cy="180" r="30" fill="#38BDF8" />
-                        <text x="150" y="190" fontSize="30" textAnchor="middle">
-                          2
-                        </text>
-                        <text
-                          x="150"
-                          y="225"
-                          fontSize="14"
-                          textAnchor="middle"
-                          fill="#333"
-                        >
-                          Change every 4-6h
-                        </text>
-                      </svg>
-                    )}
-                    {currentSlide === 4 && (
-                      // Pain Management Infographic
-                      <svg
-                        viewBox="0 0 300 300"
-                        className="w-full h-full max-w-md"
-                      >
-                        <circle
-                          cx="150"
-                          cy="150"
-                          r="120"
-                          fill="white"
-                          opacity="0.9"
-                        />
-                        <rect
-                          x="100"
-                          y="80"
-                          width="100"
-                          height="140"
-                          rx="50"
-                          fill="#FCA5A5"
-                          opacity="0.5"
-                        />
-                        <circle cx="150" cy="120" r="20" fill="#EF4444" />
-                        <text x="150" y="130" fontSize="24" textAnchor="middle">
-                          🔥
-                        </text>
-                        <text x="80" y="100" fontSize="20">
-                          💊
-                        </text>
-                        <text x="210" y="100" fontSize="20">
-                          🌡️
-                        </text>
-                        <text x="80" y="200" fontSize="20">
-                          🧘
-                        </text>
-                        <text x="210" y="200" fontSize="20">
-                          ☕
-                        </text>
-                      </svg>
-                    )}
+                    {currentSlide === 1 && <VideoPlayer id="q-6MgBDqK9E" />}
+                    {currentSlide === 2 && <VideoPlayer id="kmWbOC8Fbb0" />}
+                    {currentSlide === 3 && <VideoPlayer id="E-8gvJlkY8c" />}
+                    {currentSlide === 4 && <VideoPlayer id="vU3LmEc-hCI" />}
                   </div>
                 ) : (
                   // Video Player
@@ -334,31 +249,6 @@ function VisualLearningCarousel() {
                     )}
                   </div>
                 )}
-
-                {/* Type Badge */}
-                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full flex items-center space-x-2 shadow-lg">
-                  {currentItem.type === "video" ? (
-                    <>
-                      <Video className="w-4 h-4 text-purple-600" />
-                      <span className="text-sm font-semibold text-purple-600">
-                        Video Lesson
-                      </span>
-                    </>
-                  ) : (
-                    <>
-                      <FileText className="w-4 h-4 text-pink-600" />
-                      <span className="text-sm font-semibold text-pink-600">
-                        Infographic
-                      </span>
-                    </>
-                  )}
-                </div>
-
-                {/* Low Bandwidth Badge */}
-                <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg flex items-center space-x-1">
-                  <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-                  <span>Low Bandwidth</span>
-                </div>
               </div>
 
               {/* Right: Content Details */}

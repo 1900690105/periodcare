@@ -24,7 +24,7 @@ export default function AuthForms() {
 
   const languages = [
     "English",
-    "Hindi",
+    "हिन्दी",
     "Bengali",
     "Telugu",
     "Marathi",

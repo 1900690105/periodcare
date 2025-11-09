@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
-export default function PeriodCareFooter({ language, setLanguage }) {
+export default function PeriodCareFooter({ language }) {
   const [hoveredLink, setHoveredLink] = useState(null);
 
   const content = {
@@ -55,10 +55,11 @@ export default function PeriodCareFooter({ language, setLanguage }) {
       },
       footer: {
         copyright: "© 2025 PeriodCare. Made with",
-        team: "by Team Gcoey.",
+        team: "by Team GCOEY.",
         tagline: "Empowering Menstrual Health through AI & Awareness.",
       },
     },
+
     hi: {
       about: {
         title: "PeriodCare के बारे में",
@@ -89,8 +90,50 @@ export default function PeriodCareFooter({ language, setLanguage }) {
       },
       footer: {
         copyright: "© 2025 PeriodCare. बनाया गया",
-        team: "टीम Gcoey द्वारा।",
+        team: "टीम GCOEY द्वारा।",
         tagline: "AI और जागरूकता के माध्यम से मासिक स्वास्थ्य को सशक्त बनाना।",
+      },
+    },
+
+    mr: {
+      about: {
+        title: "PeriodCare बद्दल",
+        description:
+          "PeriodCare हे एक AI-आधारित मासिक पाळी आरोग्य जागरूकता व्यासपीठ आहे जे वैयक्तिक मार्गदर्शन, शैक्षणिक साधने आणि भावनिक समर्थन प्रदान करते, ज्यामुळे महिलांना त्यांचे शरीर समजण्यास आणि मासिक पाळीवरील टॅबू तोडण्यास मदत होते — अगदी कमी इंटरनेट कनेक्टिव्हिटी असलेल्या भागांमध्येही.",
+        tagline: "प्रत्येक महिलेला सशक्त बनवणे, सर्वत्र.",
+      },
+      quickLinks: {
+        title: "त्वरित दुवे",
+        links: [
+          "मुख्यपृष्ठ",
+          "वैशिष्ट्ये",
+          "शिका",
+          "चॅटबॉट",
+          "समुदाय",
+          "संपर्क करा",
+        ],
+      },
+      support: {
+        title: "सपोर्ट आणि धोरणे",
+        links: [
+          "गोपनीयता धोरण",
+          "सेवेची अटी",
+          "वारंवार विचारले जाणारे प्रश्न",
+          "प्रवेश सहाय्यता",
+          "भाषा पर्याय",
+        ],
+      },
+      social: {
+        title: "सोशल आणि संपर्क",
+        follow: "आम्हाला फॉलो करा",
+        contact: "संपर्क",
+        email: "support@periodcare.org",
+        location: "नागपूर, भारत",
+      },
+      footer: {
+        copyright: "© 2025 PeriodCare. बनवले",
+        team: "टीम GCOEY द्वारे.",
+        tagline: "AI आणि जागरूकतेद्वारे मासिक आरोग्य सशक्त करणे.",
       },
     },
   };
@@ -255,32 +298,6 @@ export default function PeriodCareFooter({ language, setLanguage }) {
                     {content[language].social.location}
                   </span>
                 </div>
-              </div>
-            </div>
-
-            {/* Language Switcher */}
-            <div className="mt-6">
-              <div className="bg-white rounded-full shadow-md px-3 py-2 flex gap-2 inline-flex">
-                <button
-                  onClick={() => setLanguage("en")}
-                  className={`px-3 py-1 rounded-full text-xs font-medium transition-all ${
-                    language === "en"
-                      ? "bg-pink-500 text-white"
-                      : "text-gray-600 hover:bg-pink-100"
-                  }`}
-                >
-                  EN
-                </button>
-                <button
-                  onClick={() => setLanguage("hi")}
-                  className={`px-3 py-1 rounded-full text-xs font-medium transition-all ${
-                    language === "hi"
-                      ? "bg-pink-500 text-white"
-                      : "text-gray-600 hover:bg-pink-100"
-                  }`}
-                >
-                  हिं
-                </button>
               </div>
             </div>
           </div>

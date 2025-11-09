@@ -1,4 +1,5 @@
 import { ArrowRight, Video } from "lucide-react";
+import Image from "next/image";
 import React from "react";
 
 function ExploreLearningModules() {
@@ -268,111 +269,104 @@ function ExploreLearningModules() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Cycle Phase Card 1 */}
-            <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group">
-              <div className="bg-linear-to-br from-pink-50 to-rose-50 p-6 h-48 flex items-center justify-center relative">
-                <svg viewBox="0 0 200 200" className="w-full h-full">
-                  <circle
-                    cx="100"
-                    cy="100"
-                    r="70"
-                    fill="#FBCFE8"
-                    opacity="0.5"
-                  />
-                  <circle cx="100" cy="100" r="50" fill="#FFF" />
-                  <text x="100" y="110" fontSize="40" textAnchor="middle">
-                    🌸
-                  </text>
-                </svg>
-                <div className="absolute top-3 right-3 bg-pink-500 text-white text-xs px-2 py-1 rounded-full font-semibold">
-                  Phase 1
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Common Card Component Style */}
+            {[
+              {
+                phase: "Phase 1",
+                title: "Menstrual Phase",
+                desc: "Day 1-5: Understanding what happens during your period and how to stay comfortable.",
+                linear: "from-pink-50 to-rose-50",
+                tagColor: "bg-pink-500",
+                circle: "#FBCFE8",
+                emoji: "🌸",
+                buttonColor: "from-pink-500 to-rose-500",
+                buttonText: "Learn More",
+                icon: <ArrowRight className="w-4 h-4" />,
+              },
+              {
+                phase: "Phase 2",
+                title: "Follicular Phase",
+                desc: "Day 6-14: Energy levels rise and your body prepares for ovulation.",
+                linear: "from-purple-50 to-pink-50",
+                tagColor: "bg-purple-500",
+                circle: "#E9D5FF",
+                emoji: "🌱",
+                buttonColor: "from-purple-500 to-pink-500",
+                buttonText: "Learn More",
+                icon: <ArrowRight className="w-4 h-4" />,
+              },
+              {
+                phase: "Video",
+                title: "Ovulation Phase",
+                desc: "Day 14: Peak fertility time with specific body changes to notice.",
+                linear: "from-amber-50 to-orange-50",
+                tagColor: "bg-amber-500",
+                circle: "#FED7AA",
+                emoji: "☀️",
+                buttonColor: "from-amber-500 to-orange-500",
+                buttonText: "Watch Video",
+                icon: <Video className="w-4 h-4" />,
+              },
+              {
+                phase: "Phase 4",
+                title: "Luteal Phase",
+                desc: "Day 15-28: Hormones rise and may cause PMS symptoms — focus on rest and self-care.",
+                linear: "from-rose-50 to-red-50",
+                tagColor: "bg-rose-600",
+                circle: "#FECACA",
+                emoji: "🌕",
+                buttonColor: "from-rose-500 to-red-500",
+                buttonText: "Learn More",
+                icon: <ArrowRight className="w-4 h-4" />,
+              },
+            ].map((phase, i) => (
+              <div
+                key={i}
+                className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden flex flex-col"
+              >
+                {/* Header */}
+                <div
+                  className={`bg-linear-to-br ${phase.linear} p-6 h-48 flex items-center justify-center relative`}
+                >
+                  <svg viewBox="0 0 200 200" className="w-full h-full">
+                    <circle
+                      cx="100"
+                      cy="100"
+                      r="70"
+                      fill={phase.circle}
+                      opacity="0.5"
+                    />
+                    <circle cx="100" cy="100" r="50" fill="#FFF" />
+                    <text x="100" y="110" fontSize="40" textAnchor="middle">
+                      {phase.emoji}
+                    </text>
+                  </svg>
+                  <div
+                    className={`absolute top-3 right-3 ${phase.tagColor} text-white text-xs px-2 py-1 rounded-full font-semibold`}
+                  >
+                    {phase.phase}
+                  </div>
                 </div>
-              </div>
-              <div className="p-6 space-y-3">
-                <h4 className="text-xl font-bold text-gray-900">
-                  Menstrual Phase
-                </h4>
-                <p className="text-gray-600 text-sm">
-                  Day 1-5: Understanding what happens during your period and how
-                  to stay comfortable.
-                </p>
-                <button className="w-full bg-linear-to-r from-pink-500 to-rose-500 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all flex items-center justify-center space-x-2">
-                  <span>Learn More</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
 
-            {/* Cycle Phase Card 2 */}
-            <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group">
-              <div className="bg-linear-to-br from-purple-50 to-pink-50 p-6 h-48 flex items-center justify-center relative">
-                <svg viewBox="0 0 200 200" className="w-full h-full">
-                  <circle
-                    cx="100"
-                    cy="100"
-                    r="70"
-                    fill="#E9D5FF"
-                    opacity="0.5"
-                  />
-                  <circle cx="100" cy="100" r="50" fill="#FFF" />
-                  <text x="100" y="110" fontSize="40" textAnchor="middle">
-                    🌱
-                  </text>
-                </svg>
-                <div className="absolute top-3 right-3 bg-purple-500 text-white text-xs px-2 py-1 rounded-full font-semibold">
-                  Phase 2
-                </div>
-              </div>
-              <div className="p-6 space-y-3">
-                <h4 className="text-xl font-bold text-gray-900">
-                  Follicular Phase
-                </h4>
-                <p className="text-gray-600 text-sm">
-                  Day 6-14: Energy levels rise and your body prepares for
-                  ovulation.
-                </p>
-                <button className="w-full bg-linear-to-r from-purple-500 to-pink-500 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all flex items-center justify-center space-x-2">
-                  <span>Learn More</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
+                {/* Body (equal height handling) */}
+                <div className="p-6 flex flex-col justify-between flex-grow">
+                  <div className="space-y-3">
+                    <h4 className="text-xl font-bold text-gray-900">
+                      {phase.title}
+                    </h4>
+                    <p className="text-gray-600 text-sm">{phase.desc}</p>
+                  </div>
 
-            {/* Cycle Phase Card 3 */}
-            <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group">
-              <div className="bg-linear-to-br from-amber-50 to-orange-50 p-6 h-48 flex items-center justify-center relative">
-                <svg viewBox="0 0 200 200" className="w-full h-full">
-                  <circle
-                    cx="100"
-                    cy="100"
-                    r="70"
-                    fill="#FED7AA"
-                    opacity="0.5"
-                  />
-                  <circle cx="100" cy="100" r="50" fill="#FFF" />
-                  <text x="100" y="110" fontSize="40" textAnchor="middle">
-                    ☀️
-                  </text>
-                </svg>
-                <div className="absolute top-3 right-3 bg-amber-500 text-white text-xs px-2 py-1 rounded-full font-semibold">
-                  Video
+                  <button
+                    className={`mt-4 w-full bg-linear-to-r ${phase.buttonColor} text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all flex items-center justify-center space-x-2`}
+                  >
+                    {phase.icon}
+                    <span>{phase.buttonText}</span>
+                  </button>
                 </div>
               </div>
-              <div className="p-6 space-y-3">
-                <h4 className="text-xl font-bold text-gray-900">
-                  Ovulation Phase
-                </h4>
-                <p className="text-gray-600 text-sm">
-                  Day 14: Peak fertility time with specific body changes to
-                  notice.
-                </p>
-                <button className="w-full bg-linear-to-r from-amber-500 to-orange-500 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all flex items-center justify-center space-x-2">
-                  <Video className="w-4 h-4" />
-                  <span>Watch Video</span>
-                </button>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 
@@ -396,12 +390,18 @@ function ExploreLearningModules() {
             {/* Wellness Card 1 */}
             <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group flex flex-col md:flex-row">
               <div className="bg-linear-to-br from-green-50 to-emerald-50 p-6 md:w-1/3 flex items-center justify-center">
-                <svg viewBox="0 0 150 150" className="w-full h-32">
+                {/* <svg viewBox="0 0 150 150" className="w-full h-32">
                   <circle cx="75" cy="75" r="60" fill="#BBF7D0" opacity="0.5" />
                   <text x="75" y="90" fontSize="50" textAnchor="middle">
                     🥗
                   </text>
-                </svg>
+                </svg> */}
+                <Image
+                  src={"/NutritionGuide.png"}
+                  alt=""
+                  width={200}
+                  height={200}
+                />
               </div>
               <div className="p-6 flex-1 space-y-3">
                 <div className="flex items-start justify-between">
@@ -426,12 +426,12 @@ function ExploreLearningModules() {
             {/* Wellness Card 2 */}
             <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group flex flex-col md:flex-row">
               <div className="bg-linear-to-br from-purple-50 to-indigo-50 p-6 md:w-1/3 flex items-center justify-center">
-                <svg viewBox="0 0 150 150" className="w-full h-32">
-                  <circle cx="75" cy="75" r="60" fill="#DDD6FE" opacity="0.5" />
-                  <text x="75" y="90" fontSize="50" textAnchor="middle">
-                    🧘
-                  </text>
-                </svg>
+                <Image
+                  src={"/ExerciseTips.png"}
+                  alt=""
+                  width={200}
+                  height={300}
+                />
               </div>
               <div className="p-6 flex-1 space-y-3">
                 <div className="flex items-start justify-between">

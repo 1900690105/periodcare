@@ -9,7 +9,7 @@ import {
   FileCheck,
 } from "lucide-react";
 
-export default function PrivacySecurity({ language, setLanguage }) {
+export default function PrivacySecurity({ language }) {
   const content = {
     en: {
       badge: "Privacy First",
@@ -66,6 +66,35 @@ export default function PrivacySecurity({ language, setLanguage }) {
       trustBadges: {
         gdpr: "GDPR अनुपालन",
         hipaa: "HIPAA मानक",
+        ssl: "256-बिट SSL",
+      },
+    },
+    mr: {
+      badge: "गोपनीयता प्रथम",
+      heading: "तुमची गोपनीयता. आमचं वचन.",
+      subheading:
+        "आम्ही तुमची वैयक्तिक माहिती सर्वोच्च सुरक्षेच्या आणि गोपनीयतेच्या मानकांनुसार संरक्षित करतो.",
+      features: [
+        {
+          title: "वैयक्तिक ओळख ट्रॅकिंग नाही",
+          description:
+            "आम्ही कधीही तुमची वैयक्तिक ओळख ट्रॅक किंवा संग्रहित करत नाही. तुमचा मासिक पाळी आरोग्य प्रवास पूर्णपणे गुप्त आणि खाजगी राहतो.",
+        },
+        {
+          title: "अज्ञात डेटाचा वापर",
+          description:
+            "संकलित केलेला कोणताही डेटा पूर्णपणे अज्ञात ठेवला जातो आणि फक्त आमच्या सेवांचा दर्जा सुधारण्यासाठी वापरला जातो. तुमची वैयक्तिक माहिती कधीही शेअर किंवा विकली जात नाही.",
+        },
+        {
+          title: "एनक्रिप्टेड क्लाउड स्टोरेज",
+          description:
+            "तुमचा सर्व डेटा सैनिकी दर्जाच्या एनक्रिप्शनसह सुरक्षित आहे, प्रवासात आणि संचयनात दोन्ही ठिकाणी, जे उच्चतम सुरक्षा सुनिश्चित करते.",
+        },
+      ],
+      cta: "पूर्ण गोपनीयता धोरण वाचा",
+      trustBadges: {
+        gdpr: "GDPR अनुरूप",
+        hipaa: "HIPAA मानके",
         ssl: "256-बिट SSL",
       },
     },

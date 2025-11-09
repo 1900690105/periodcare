@@ -8,7 +8,7 @@ import {
   Sparkles,
 } from "lucide-react";
 
-export default function PeriodCareCommunity({ language, setLanguage }) {
+export default function PeriodCareCommunity({ language }) {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const content = {
@@ -35,6 +35,17 @@ export default function PeriodCareCommunity({ language, setLanguage }) {
         parent: "माता-पिता",
         educator: "शिक्षक",
         student: "छात्र",
+      },
+    },
+    mr: {
+      heading: "एकत्र येऊन, आपण मासिक पाळीवरील संवाद सामान्य बनवूया.",
+      subheading: "खऱ्या लोकांच्या खऱ्या कथा — एक आधार देणारे समुदाय घडवत आहेत",
+      cta1: "आमच्या समुदायात सामील व्हा",
+      cta2: "तुमची कथा शेअर करा",
+      perspectives: {
+        parent: "पालक",
+        educator: "शिक्षक",
+        student: "विद्यार्थी",
       },
     },
   };
@@ -77,7 +88,7 @@ export default function PeriodCareCommunity({ language, setLanguage }) {
   const perspectiveCards = [
     {
       icon: <Heart className="w-8 h-8" />,
-      title: content[language].perspectives.parent,
+      title: content[language]?.perspectives?.parent || "en",
       description:
         "Empowering parents to support their children through every stage of menstrual health with confidence and care.",
       color: "from-pink-100 to-pink-50",
@@ -85,7 +96,7 @@ export default function PeriodCareCommunity({ language, setLanguage }) {
     },
     {
       icon: <BookOpen className="w-8 h-8" />,
-      title: content[language].perspectives.educator,
+      title: content[language]?.perspectives?.educator || "en",
       description:
         "Equipping educators with comprehensive resources to teach menstrual health with sensitivity and accuracy.",
       color: "from-purple-100 to-purple-50",

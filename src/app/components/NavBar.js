@@ -7,7 +7,12 @@ import React, { useState } from "react";
 function NavBar({ setLanguage, language }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const languages = ["en", "hi", "मराठी", "தமிழ்", "বাংলা", "తెలుగు"];
+  const languages = [
+    { code: "en", label: "English" },
+    { code: "hi", label: "हिन्दी" },
+    { code: "mr", label: "मराठी" },
+  ];
+
   return (
     <>
       <nav className="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-50">
@@ -53,14 +58,14 @@ function NavBar({ setLanguage, language }) {
                   value={language}
                   onChange={(e) => setLanguage(e.target.value)}
                   className="bg-pink-100 text-pink-700 px-4 py-2 rounded-full font-medium cursor-pointer border-2 border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-400 appearance-none pr-10"
-                  aria-label="Select Language"
                 >
                   {languages.map((lang) => (
-                    <option key={lang} value={lang}>
-                      {lang}
+                    <option key={lang.code} value={lang.code}>
+                      {lang.label}
                     </option>
                   ))}
                 </select>
+
                 <Globe className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-pink-600 pointer-events-none" />
               </div>
 

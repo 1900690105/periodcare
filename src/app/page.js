@@ -13,7 +13,7 @@ import PrivacySecurity from "./components/Privacy";
 import PeriodCareFooter from "./components/Footer";
 
 export default function PeriodCareHero() {
-  const [language, setLanguage] = useState("en");
+  const [language, setLanguage] = useState("mr");
 
   const scrollToSection = (sectionId) => {
     // Smooth scroll functionality
@@ -29,25 +29,25 @@ export default function PeriodCareHero() {
       <NavBar setLanguage={setLanguage} language={language} />
 
       {/* Hero Section */}
-      <HeroSection />
+      <HeroSection language={language} />
 
       <AIChatbot />
 
-      <FeaturesSection />
+      <FeaturesSection language={language} />
 
-      <JourneyTimeline />
+      <JourneyTimeline language={language} />
 
-      <EducationAwareness />
+      <EducationAwareness language={language} />
 
-      <StateSection />
+      <StateSection language={language} />
 
-      <PeriodCareCommunity language={language} setLanguage={setLanguage} />
+      <PeriodCareCommunity language={language}  />
 
-      <PrivacySecurity language={language} setLanguage={setLanguage} />
+      <PrivacySecurity language={language} />
 
       {/* Placeholder for next sections */}
       <div id="education" className="h-20"></div>
-      <PeriodCareFooter language={language} setLanguage={setLanguage} />
+      <PeriodCareFooter language={language} />
     </div>
   );
 }
