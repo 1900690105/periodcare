@@ -1,16 +1,19 @@
-# main.py
 from fastapi import FastAPI, Body, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import httpx
 from rag_utils import query_vector_db
 import google.generativeai as genai
+import os
+from dotenv import load_dotenv
 
-# === CONFIG ===
-GEMINI_API_KEY = "AIzaSyCdNTFgE3L1b2gp7TJm2nlHniFBEOPAYzE"  # Replace with your real key
+
+load_dotenv()
+GEMINI_API_KEY = "AIzaSyBwuJgKA2fXh1rK1-d_Nf9RK_v-BaxCq5c" # Replace with your actual Gemini API key
 genai.configure(api_key=GEMINI_API_KEY)
 
 app = FastAPI(title="PeriodCare Chatbot")
 
+# Allow frontend (Next.js) to communicate
 origins = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
@@ -24,7 +27,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Global HTTP client for reuse
+# Reusable HTTP client for Ollama
 http_client = None
 
 
@@ -40,50 +43,87 @@ async def shutdown():
     await http_client.aclose()
 
 
-def refine_with_gemini(text: str, target_language: str = "English") -> str:
-    """Improve and optionally translate model output using Gemini."""
+# === 1️⃣ Input Normalization ===
+def normalize_input(text: str) -> str:
+    """
+    Detect and translate user input (e.g. Marathi in English letters)
+    into clean English before passing to the LLM.
+    """
     try:
         prompt = f"""
-You are an expert AI assistant that improves and translates text.
-Your goals:
-- Make the text clear, kind, natural, and conversational.
-- Fix grammar or tone issues.
-- Translate to {target_language} if needed.
-- Keep all important facts correct.
+You are a language detector and translator.
+The user input may be English, Marathi, Hindi, or transliterated (like 'Marathi written in English letters').
+Your job:
+1. Detect the actual meaning and intent.
+2. Translate it accurately to clear English.
+3. Output only the English translation.
+
+Input: {text}
+Output:
+"""
+        model = genai.GenerativeModel("gemini-2.0-flash")
+        response = model.generate_content(prompt)
+        return response.text.strip()
+    except Exception as e:
+        print(f"⚠️ Translation Error: {e}")
+        return text
+
+
+# === 2️⃣ Gemini Refinement ===
+def refine_with_gemini(text: str, target_language: str = "English") -> str:
+    """Make output more natural, friendly, and optionally translate."""
+    try:
+        prompt = f"""
+You are a smart and empathetic language assistant.
+Make the text sound clear, kind, and natural.
+Translate it into {target_language} if requested.
 
 Input:
 {text}
 
-Output only the improved and translated text — nothing else.
+Output (improved and translated if needed):
 """
-        model = genai.GenerativeModel("gemini-2.5-flash")
+        model = genai.GenerativeModel("gemini-2.0-flash")
         response = model.generate_content(prompt)
         return response.text.strip()
     except Exception as e:
         print(f"⚠️ Gemini Error: {e}")
-        return text  # Fallback to raw output
+        return text
 
 
+# === 3️⃣ Main Chat Endpoint ===
 @app.post("/chat")
 async def chat(
     question: str = Body(..., embed=True),
-    language: str = Body(..., embed=True)  # Optional: specify output language
+    language: str = Body("English", embed=True),  # Default language is English
 ):
+    """
+    Main chat endpoint.
+    - Normalizes user input (detects transliteration)
+    - Queries vector DB for context
+    - Uses local Ollama model for reasoning
+    - Refines and translates response with Gemini
+    """
     try:
-        # 1️⃣ Get context from vector DB
-        context = query_vector_db(question)
+        # Step 1: Normalize input
+        normalized_question = normalize_input(question)
+        print(f"🧠 Normalized question: {normalized_question}")
 
-        # 2️⃣ Build full prompt for local model
-        prompt = f"""Use the following context to answer clearly and kindly:
+        # Step 2: Get relevant context from Vector DB
+        context = query_vector_db(normalized_question)
+
+        # Step 3: Build prompt for local model
+        prompt = f"""You are a helpful women's health assistant.
+Use the following context to answer clearly and kindly.
 
 Context:
 {context}
 
-Question: {question}
+Question: {normalized_question}
 
 Answer:"""
 
-        # 3️⃣ Ask local LLM (Ollama)
+        # Step 4: Ask local Ollama model
         response = await http_client.post(
             "http://localhost:11434/api/generate",
             json={
@@ -94,7 +134,7 @@ Answer:"""
         )
 
         if response.status_code != 200:
-            raise HTTPException(status_code=500, detail="Model service error")
+            raise HTTPException(status_code=500, detail="Local model service error")
 
         result = response.json()
         raw_answer = result.get("response", "").strip()
@@ -102,13 +142,15 @@ Answer:"""
         if not raw_answer:
             raw_answer = "Sorry, I couldn't generate a response."
 
-        # 4️⃣ Refine and translate with Gemini
+        # Step 5: Refine and translate using Gemini
         refined_answer = refine_with_gemini(raw_answer, language)
 
-        # 5️⃣ Return both versions for debugging (optional)
+        # Step 6: Return both for transparency
         return {
             "answer": refined_answer,
-            "raw_answer": raw_answer
+            "raw_answer": raw_answer,
+            "language_used": language,
+            "normalized_input": normalized_question
         }
 
     except Exception as e:
@@ -116,38 +158,7 @@ Answer:"""
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# === 4️⃣ Health Check ===
 @app.get("/health")
 def health():
     return {"status": "healthy"}
-
-
-
-# from fastapi import FastAPI, Body
-# import subprocess
-# from rag_utils import build_vector_db, query_vector_db
-
-# app = FastAPI(title="PeriodCare Chatbot")
-
-# # initialize DB once
-# build_vector_db("data/PeriodCare.pdf")
-
-# @app.post("/chat")
-# def chat(question: str = Body(..., embed=True)):
-#     context = query_vector_db(question)
-#     prompt = f"Use the following context to answer clearly and kindly:\n{context}\n\nQuestion: {question}"
-#     cmd = ["ollama", "run", "phi3:mini", prompt]
-    
-#     # Run subprocess safely with UTF-8
-#     result = subprocess.run(
-#         cmd,
-#         capture_output=True,
-#         text=True,
-#         encoding="utf-8",
-#         errors="replace"
-#     )
-    
-#     answer = result.stdout.strip()
-#     if not answer:
-#         answer = "Sorry, I couldn't get a response from the model."
-    
-#     return {"answer": answer}

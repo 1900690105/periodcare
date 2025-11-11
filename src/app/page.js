@@ -31,7 +31,7 @@ export default function PeriodCareHero() {
       {/* Hero Section */}
       <HeroSection language={language} />
 
-      <AIChatbot />
+      <AIChatbot lan={language} />
 
       <FeaturesSection language={language} />
 
@@ -41,7 +41,7 @@ export default function PeriodCareHero() {
 
       <StateSection language={language} />
 
-      <PeriodCareCommunity language={language}  />
+      <PeriodCareCommunity language={language} />
 
       <PrivacySecurity language={language} />
 

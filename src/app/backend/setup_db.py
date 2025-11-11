@@ -10,8 +10,12 @@ import os
 def main():
     # List all PDFs to include
     pdf_paths = [
-        "data/PeriodCare.pdf",
-        "data/PeriodRepairManual.pdf"
+        "data/2025-State-of-the-Period-Study.pdf",
+        "data/EasyReadmenstrualhealthhygienedisabilitiesguidancenote.pdf",
+        "data/MHM-Monitoring-Resource.pdf",
+        "data/PeriodRepairManual.pdf",
+        "data/UNICEF-Guidance-menstrual-health-hygiene-2019.pdf",
+        "data/UNICEF-Guide-menstrual-hygiene-materials-2019.pdf"
     ]
     
     # Check if all PDFs exist

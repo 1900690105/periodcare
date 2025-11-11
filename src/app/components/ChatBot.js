@@ -13,7 +13,7 @@ import {
   ChevronLeft,
 } from "lucide-react";
 
-export default function AIChatbot() {
+export default function AIChatbot({ lan }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [isOnline, setIsOnline] = useState(true);
@@ -31,6 +31,16 @@ export default function AIChatbot() {
   const [isTyping, setIsTyping] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    if (lan === "mr") {
+      setLanguage("Marathi");
+    } else if (lan === "hi") {
+      setLanguage("Hindi");
+    } else {
+      setLanguage("English");
+    }
+  }, [lan]);
 
   const languages = [
     "English",
@@ -100,17 +110,6 @@ export default function AIChatbot() {
     { text: "Hygiene practices?", category: "hygiene" },
     { text: "Feeling emotional", category: "emotional" },
   ];
-
-  const botResponses = {
-    diet: "Great question! During your period, focus on:\n\n🥬 Iron-rich foods (spinach, beans)\n🍌 Potassium (bananas, avocados)\n🥜 Omega-3 (nuts, fish)\n💧 Stay hydrated\n🍫 Small amounts of dark chocolate for magnesium\n\nAvoid: excess salt, caffeine, and processed foods.",
-    exercise:
-      "Exercise can help! Try:\n\n🧘 Gentle yoga and stretching\n🚶 Light walking (30 mins)\n🏊 Swimming (if comfortable)\n💪 Low-intensity strength training\n\nListen to your body - rest when needed! 💜",
-    pain: "For period pain relief:\n\n🌡️ Apply heat pad on abdomen\n💊 Take prescribed pain relievers\n🧘 Practice relaxation techniques\n☕ Chamomile tea helps\n🛁 Warm bath\n\nIf pain is severe, consult a doctor.",
-    hygiene:
-      "Menstrual hygiene tips:\n\n🧼 Change pad/tampon every 4-6 hours\n💧 Maintain intimate hygiene\n👐 Wash hands before/after\n🚿 Shower regularly\n👗 Wear breathable cotton underwear\n🗑️ Dispose products properly",
-    emotional:
-      "I understand periods can be emotionally challenging. 💜\n\n✨ Your feelings are valid\n🧘 Try meditation or deep breathing\n📱 Talk to someone you trust\n📝 Journal your thoughts\n🎵 Listen to calming music\n🌸 Practice self-care\n\nYou're not alone in this!",
-  };
 
   // Check device type and online/offline status
   useEffect(() => {
