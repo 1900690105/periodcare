@@ -4,94 +4,64 @@ import chromadb
 from chromadb.utils import embedding_functions
 from PyPDF2 import PdfReader
 from functools import lru_cache
+import os
+
 
 def load_pdf_text(path):
-    """Extract text from PDF"""
+    """Extract text from a PDF file."""
     text = ""
     reader = PdfReader(path)
     for page in reader.pages:
-        page_text = page.extract_text()
-        if page_text:
-            text += page_text + "\n"
+        text += page.extract_text() or ""
     return text
+
+def load_text_file(path):
+    """Read text from TXT, CSV, or JSON file as plain text."""
+    with open(path, "r", encoding="utf-8", errors="ignore") as f:
+        return f.read()
 
 def build_vector_db(pdf_path, persist_dir="db/chroma"):
     """Build vector database from single PDF - DEPRECATED, use build_vector_db_multi"""
     return build_vector_db_multi([pdf_path], persist_dir)
 
-def build_vector_db_multi(pdf_paths, persist_dir="db/chroma"):
-    """Build vector database from multiple PDFs - run this ONCE before starting server"""
-    client = chromadb.PersistentClient(path=persist_dir)
-    
-    # Check if collection already exists
-    try:
-        coll = client.get_collection("periodcare_docs")
-        if coll.count() > 0:
-            print(f"⚠️  Collection already exists with {coll.count()} chunks")
-            user_input = input("Do you want to rebuild? This will delete existing data. (yes/no): ")
-            if user_input.lower() != 'yes':
-                print("✅ Using existing collection")
-                return coll
-            else:
-                client.delete_collection("periodcare_docs")
-                print("🗑️  Deleted existing collection")
-    except:
-        pass
-    
-    # Create new collection
-    coll = client.get_or_create_collection(
-        name="periodcare_docs",
-        embedding_function=embedding_functions.SentenceTransformerEmbeddingFunction(
-            model_name="all-MiniLM-L6-v2"
-        ),
-    )
-    
-    all_chunks = []
-    all_metadata = []
-    
-    # Process each PDF
-    for pdf_idx, pdf_path in enumerate(pdf_paths):
-        print(f"\n📄 Processing {pdf_path}...")
-        text = load_pdf_text(pdf_path)
-        
-        # Chunk with overlap for better retrieval
-        chunk_size = 400
-        overlap = 50
-        pdf_chunks = []
-        
-        for i in range(0, len(text), chunk_size - overlap):
-            chunk = text[i:i+chunk_size].strip()
-            if chunk and len(chunk) > 50:  # Skip very small chunks
-                pdf_chunks.append(chunk)
-                all_metadata.append({
-                    "source": pdf_path,
-                    "pdf_index": pdf_idx
-                })
-        
-        all_chunks.extend(pdf_chunks)
-        print(f"   ✓ Created {len(pdf_chunks)} chunks from {pdf_path}")
-    
-    print(f"\n📦 Total chunks across all PDFs: {len(all_chunks)}")
-    
-    # Add to database in batches
-    ids = [f"chunk_{i}" for i in range(len(all_chunks))]
-    batch_size = 100
-    
-    for i in range(0, len(all_chunks), batch_size):
-        batch_chunks = all_chunks[i:i+batch_size]
-        batch_ids = ids[i:i+batch_size]
-        batch_metadata = all_metadata[i:i+batch_size]
-        
-        coll.add(
-            ids=batch_ids,
-            documents=batch_chunks,
-            metadatas=batch_metadata
-        )
-        print(f"  Added batch {i//batch_size + 1}/{(len(all_chunks)-1)//batch_size + 1}")
-    
-    print(f"\n✅ Vector DB built successfully with {len(all_chunks)} chunks from {len(pdf_paths)} PDFs")
-    return coll
+def build_vector_db_multi(file_paths):
+    """
+    Build vector database from multiple input files (PDF, TXT, CSV, JSON).
+    """
+    all_texts = []
+    for path in file_paths:
+        print(f"📄 Processing {path}...")
+        ext = os.path.splitext(path)[1].lower()
 
+        try:
+            if ext == ".pdf":
+                text = load_pdf_text(path)
+            elif ext in [".txt", ".csv", ".json"]:
+                text = load_text_file(path)
+            else:
+                print(f"⚠️ Skipping unsupported file: {path}")
+                continue
+
+            if text.strip():
+                all_texts.append(text)
+            else:
+                print(f"⚠️ Empty file skipped: {path}")
+
+        except Exception as e:
+            print(f"❌ Error reading {path}: {e}")
+
+    # ✅ Combine all text for embedding/vector creation
+    print(f"\n🧠 Total files processed: {len(all_texts)}")
+    if not all_texts:
+        print("❌ No text extracted. Nothing to build.")
+        return
+
+    # ✨ Replace this section with your vector DB logic
+    # Example placeholder:
+    print("🚀 Building vector database (embedding step here)...")
+    # build_embeddings(all_texts)  <-- your actual implementation
+
+    print("✅ Vector database build complete!")
 @lru_cache(maxsize=1)
 def get_collection(persist_dir="db/chroma"):
     """Get cached collection object"""

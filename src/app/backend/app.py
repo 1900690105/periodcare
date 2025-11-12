@@ -8,8 +8,11 @@ from dotenv import load_dotenv
 
 
 load_dotenv()
-GEMINI_API_KEY = "AIzaSyBwuJgKA2fXh1rK1-d_Nf9RK_v-BaxCq5c" # Replace with your actual Gemini API key
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 genai.configure(api_key=GEMINI_API_KEY)
+
+if not GEMINI_API_KEY:
+    raise ValueError("❌ Missing GEMINI_API_KEY in environment variables")
 
 app = FastAPI(title="PeriodCare Chatbot")
 
@@ -77,10 +80,8 @@ def refine_with_gemini(text: str, target_language: str = "English") -> str:
 You are a smart and empathetic language assistant.
 Make the text sound clear, kind, and natural.
 Translate it into {target_language} if requested.
-
 Input:
 {text}
-
 Output (improved and translated if needed):
 """
         model = genai.GenerativeModel("gemini-2.0-flash")

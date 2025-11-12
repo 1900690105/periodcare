@@ -46,10 +46,10 @@ function NavBar({ setLanguage, language }) {
                 About
               </Link>
               <Link
-                href="#contact"
+                href="/doctor"
                 className="text-gray-700 hover:text-pink-600 transition-colors font-medium"
               >
-                Contact
+                Doctor
               </Link>
 
               {/* Language Selector */}
@@ -113,10 +113,10 @@ function NavBar({ setLanguage, language }) {
                 About
               </Link>
               <Link
-                href="#contact"
+                href="/doctor"
                 className="block text-gray-700 hover:text-pink-600 transition-colors font-medium py-2"
               >
-                Contact
+                Doctor
               </Link>
 
               <select
