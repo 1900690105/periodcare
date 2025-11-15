@@ -15,14 +15,6 @@ import PeriodCareFooter from "./components/Footer";
 export default function PeriodCareHero() {
   const [language, setLanguage] = useState("mr");
 
-  const scrollToSection = (sectionId) => {
-    // Smooth scroll functionality
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <div className="min-h-screen bg-linear-to-br from-pink-200 via-lavender-100 to-gray-200">
       {/* Navigation */}

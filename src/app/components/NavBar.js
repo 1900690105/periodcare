@@ -2,16 +2,48 @@
 import { Globe, Heart, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function NavBar({ setLanguage, language }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem("language", language);
+  }, [language]);
 
   const languages = [
     { code: "en", label: "English" },
     { code: "hi", label: "हिन्दी" },
     { code: "mr", label: "मराठी" },
   ];
+
+  // 🔤 Translations for all supported languages
+  const translations = {
+    en: {
+      education: "Education",
+      community: "Community",
+      about: "About",
+      doctor: "Doctor",
+      signIn: "Sign In",
+    },
+    hi: {
+      education: "शिक्षा",
+      community: "समुदाय",
+      about: "हमारे बारे में",
+      doctor: "डॉक्टर",
+      signIn: "साइन इन करें",
+    },
+    mr: {
+      education: "शिक्षण",
+      community: "समुदाय",
+      about: "आमच्याबद्दल",
+      doctor: "डॉक्टर",
+      signIn: "साइन इन करा",
+    },
+  };
+
+  // Get current translation set
+  const t = translations[language] || translations.en;
 
   return (
     <>
@@ -31,25 +63,25 @@ function NavBar({ setLanguage, language }) {
                 href={"/learn"}
                 className="text-gray-700 hover:text-pink-600 transition-colors font-medium"
               >
-                Education
+                {t.education}
               </Link>
               <Link
                 href={"/community"}
                 className="text-gray-700 hover:text-pink-600 transition-colors font-medium"
               >
-                Community
+                {t.community}
               </Link>
               <Link
                 href="#about"
                 className="text-gray-700 hover:text-pink-600 transition-colors font-medium"
               >
-                About
+                {t.about}
               </Link>
               <Link
                 href="/doctor"
                 className="text-gray-700 hover:text-pink-600 transition-colors font-medium"
               >
-                Doctor
+                {t.doctor}
               </Link>
 
               {/* Language Selector */}
@@ -65,15 +97,14 @@ function NavBar({ setLanguage, language }) {
                     </option>
                   ))}
                 </select>
-
                 <Globe className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-pink-600 pointer-events-none" />
               </div>
 
               <button
                 onClick={() => (window.location.href = "/createaccount")}
-                className="bg-pink-500  text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                className="bg-pink-500 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
               >
-                Sign In
+                {t.signIn}
               </button>
             </div>
 
@@ -98,25 +129,25 @@ function NavBar({ setLanguage, language }) {
                 href={"/community"}
                 className="block text-gray-700 hover:text-pink-600 transition-colors font-medium py-2"
               >
-                Community
+                {t.community}
               </Link>
               <Link
                 href={"/learn"}
                 className="block text-gray-700 hover:text-pink-600 transition-colors font-medium py-2"
               >
-                Education
+                {t.education}
               </Link>
               <Link
                 href="#about"
                 className="block text-gray-700 hover:text-pink-600 transition-colors font-medium py-2"
               >
-                About
+                {t.about}
               </Link>
               <Link
                 href="/doctor"
                 className="block text-gray-700 hover:text-pink-600 transition-colors font-medium py-2"
               >
-                Doctor
+                {t.doctor}
               </Link>
 
               <select
@@ -126,14 +157,17 @@ function NavBar({ setLanguage, language }) {
                 aria-label="Select Language"
               >
                 {languages.map((lang) => (
-                  <option key={lang} value={lang}>
-                    {lang}
+                  <option key={lang.code} value={lang.code}>
+                    {lang.label}
                   </option>
                 ))}
               </select>
 
-              <button className="w-full bg-linear-to-r from-pink-500 to-coral-500 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all">
-                Sign In
+              <button
+                onClick={() => (window.location.href = "/createaccount")}
+                className="w-full bg-linear-to-r from-pink-500 to-coral-500 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all"
+              >
+                {t.signIn}
               </button>
             </div>
           )}

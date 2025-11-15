@@ -11,6 +11,7 @@ import {
   Heart,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function AuthForms() {
   const [isLogin, setIsLogin] = useState(true);
@@ -22,20 +23,7 @@ export default function AuthForms() {
     language: "English",
   });
 
-  const languages = [
-    "English",
-    "हिन्दी",
-    "Bengali",
-    "Telugu",
-    "Marathi",
-    "Tamil",
-    "Gujarati",
-    "Kannada",
-    "Malayalam",
-    "Punjabi",
-    "Odia",
-    "Urdu",
-  ];
+  const languages = ["English", "हिन्दी", "Marathi"];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -76,10 +64,14 @@ export default function AuthForms() {
         <div className="hidden md:flex flex-col items-center justify-center p-8">
           <div className="relative w-full max-w-md">
             {/* Placeholder for illustration/image */}
-            <div className="bg-linear-to-br from-pink-200 via-purple-200 to-blue-200 rounded-3xl aspect-square flex items-center justify-center shadow-2xl transform hover:scale-105 transition-transform duration-500">
+            <div
+              className={`bg-linear-to-br from-pink-200 via-purple-200 to-blue-200 rounded-3xl aspect-square flex items-center justify-center shadow-2xl transform hover:scale-105 transition-transform duration-500 ${
+                isLogin ? "" : "-mt-[220px]"
+              }`}
+            >
               <div className="text-center p-8">
                 <div
-                  className="text-8xl mb-2 animate-bounce flex justify-center"
+                  className={`text-8xl mb-2 animate-bounce flex justify-center `}
                   style={{ animationDuration: "3s" }}
                 >
                   <Image
@@ -117,7 +109,7 @@ export default function AuthForms() {
             >
               <Globe className="w-4 h-4 text-purple-500" />
               <span className="text-sm font-semibold text-gray-700">
-                12+ Languages
+                Chat in 12+ Languages
               </span>
             </div>
           </div>
@@ -129,7 +121,9 @@ export default function AuthForms() {
             {/* Header */}
             <div className="text-center mb-8">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-linear-to-r from-pink-400 to-rose-400 rounded-2xl mb-4 shadow-lg">
-                <Image src={"/logo2.png"} alt="logo" width={60} height={60} />
+                <Link href={"/"}>
+                  <Image src={"/logo2.png"} alt="logo" width={60} height={60} />
+                </Link>
               </div>
               <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-2">
                 {isLogin ? "Welcome Back!" : "Join PeriodCare"}
@@ -219,7 +213,7 @@ export default function AuthForms() {
                       onChange={(e) =>
                         setFormData({ ...formData, name: e.target.value })
                       }
-                      className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-pink-400 focus:outline-none transition-colors duration-300"
+                      className="w-full text-black pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-pink-400 focus:outline-none transition-colors duration-300"
                       placeholder="Enter your name"
                     />
                   </div>
@@ -240,7 +234,7 @@ export default function AuthForms() {
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
-                    className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-pink-400 focus:outline-none transition-colors duration-300"
+                    className="w-full text-black pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-pink-400 focus:outline-none transition-colors duration-300"
                     placeholder="your.email@example.com"
                   />
                 </div>
@@ -259,7 +253,7 @@ export default function AuthForms() {
                     onChange={(e) =>
                       setFormData({ ...formData, password: e.target.value })
                     }
-                    className="w-full pl-12 pr-12 py-3 border-2 border-gray-200 rounded-xl focus:border-pink-400 focus:outline-none transition-colors duration-300"
+                    className="w-full text-black pl-12 pr-12 py-3 border-2 border-gray-200 rounded-xl focus:border-pink-400 focus:outline-none transition-colors duration-300"
                     placeholder="••••••••"
                   />
                   <button
@@ -289,7 +283,7 @@ export default function AuthForms() {
                       onChange={(e) =>
                         setFormData({ ...formData, language: e.target.value })
                       }
-                      className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-pink-400 focus:outline-none transition-colors duration-300 appearance-none bg-white"
+                      className="w-full text-black pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-pink-400 focus:outline-none transition-colors duration-300 appearance-none bg-white"
                     >
                       {languages.map((lang) => (
                         <option key={lang} value={lang}>
@@ -307,7 +301,7 @@ export default function AuthForms() {
                   <label className="flex items-center gap-2 cursor-pointer">
                     <input
                       type="checkbox"
-                      className="w-4 h-4 rounded border-gray-300 text-pink-500 focus:ring-pink-400"
+                      className="w-4 h-4 text-black rounded border-gray-300 text-pink-500 focus:ring-pink-400"
                     />
                     <span className="text-sm text-gray-600">Remember me</span>
                   </label>
@@ -325,7 +319,7 @@ export default function AuthForms() {
                 <label className="flex items-start gap-2 cursor-pointer">
                   <input
                     type="checkbox"
-                    className="w-4 h-4 mt-1 rounded border-gray-300 text-pink-500 focus:ring-pink-400"
+                    className="w-4 h-4 mt-1 text-black rounded border-gray-300 text-pink-500 focus:ring-pink-400"
                   />
                   <span className="text-sm text-gray-600">
                     I agree to the{" "}
@@ -378,7 +372,7 @@ export default function AuthForms() {
                 </div>
                 <div className="flex items-center gap-1">
                   <span className="text-green-500">🌍</span>
-                  <span>12+ Languages</span>
+                  <span>Multiple Languages</span>
                 </div>
               </div>
             </div>
