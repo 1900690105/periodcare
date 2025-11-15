@@ -5,7 +5,7 @@ You can copy-paste directly into GitHub.
 
 ### 📌 README.md
 
-```md
+```
 # 🌸 PeriodCare AI — Smart Menstrual Health Support Platform
 
 PeriodCare AI is an intelligent menstrual health companion designed to provide fully personalized support to women and menstruating individuals.  
