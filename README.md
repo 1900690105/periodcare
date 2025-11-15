@@ -1,36 +1,179 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Absolutely! Here is a **professional, polished, investor-friendly GitHub README.md** for your **PeriodCare AI — Menstrual Health Support Platform** 🚀
+You can copy-paste directly into GitHub.
 
-## Getting Started
+---
 
-First, run the development server:
+### 📌 README.md
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+# 🌸 PeriodCare AI — Smart Menstrual Health Support Platform
+
+PeriodCare AI is an intelligent menstrual health companion designed to provide fully personalized support to women and menstruating individuals.  
+It uses **AI-powered symptom analysis**, **RAG (Retrieval-Augmented Generation)**, and **medical knowledge** to deliver safe, trusted menstrual care guidance.
+
+---
+
+## 👩‍⚕️ What is PeriodCare AI?
+
+PeriodCare AI combines **AI + medical science + personalized care** to help users understand:
+- Their **menstrual cycle**
+- Symptoms and mood changes
+- Nutrition and exercise suited for each phase
+- Potential risks of menstrual disorders
+- Safe home remedies backed by research
+
+The goal: **Empower menstrual health with accurate education, symptom tracking, and compassionate support** 🌼
+
+---
+
+## ✨ Key Features
+
+| Feature | Description |
+|--------|-------------|
+| 🧠 AI Chatbot | Local + cloud LLM hybrid for fast, safe, bilingual conversation |
+| 📚 RAG Knowledge System | Medical data from trusted PDFs to provide accurate answers |
+| ⚕️ Disease Pre-Screening Tests | Risk check for PCOS, Endometriosis, PMS/PMDD & more |
+| 🥗 Phase-Based Diet Plans | Nutritious food suggestions with do’s & don’ts |
+| 💪 Exercise Suggestions | Safe workouts based on symptoms & disorders |
+| 🧘 Ayurveda Support | Dosha-based recommendations |
+| 📊 Cycle & Mood Tracking *(Upcoming)* | Smart predictions + mental health support |
+| ❤️ Partner Mode | Helps partners understand moods & symptoms better |
+
+---
+
+## 🔬 Supported Disorders (More coming soon)
+
+- PCOS & PCOD
+- Endometriosis
+- Adenomyosis
+- Dysmenorrhea (Severe Cramps)
+- PMS / PMDD
+
+Each test uses:
+✔ Evidence-based symptom questionnaires  
+✔ Risk scoring  
+✔ Doctor-recommended advice  
+
+---
+
+## 🏛️ Tech Stack
+
+### Frontend
+- **Next.js 14 (App Router)**
+- **Tailwind CSS**
+
+### Backend
+- **Python**
+- **FastAPI**
+- **RAG** (Sentence Transformer + ChromaDB)
+- **Ollama (Local LLM: Phi3-mini)**
+- **Gemini API** for translation + improvement
+
+---
+
+## 🧩 System Architecture
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+User → Next.js (UI)
+↓
+FastAPI Backend
+↓
+LLM (Ollama - Local Model)
+↓
+Refinement & Translation (Google Gemini)
+↓
+Chroma Vector DB (Medical PDFs)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 📁 Folder Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+periodcare/
+├── frontend (Next.js)
+├── backend (FastAPI)
+├── db/chroma (Vector DB)
+├── medical_pdfs/ (Training context)
+└── README.md
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+````
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🚀 Installation & Setup
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Backend
+```sh
+cd src/app/backend
+pip install fastapi uvicorn chromadb sentence-transformers PyPDF2
+python setup_db.py
+uvicorn main:app --reload
+````
+
+### Frontend
+
+```sh
+npm install
+npm run dev
+```
+
+---
+
+## 🔐 Safety & Ethics
+
+PeriodCare does **not** replace doctors.
+It only provides **pre-screening & educational support**.
+
+* No harmful medical recommendations
+* Multilingual clarity (English, Hindi, Marathi)
+* Privacy-first data access
+
+---
+
+## 📌 Vision & Mission
+
+> “Creating a world where menstrual health is understood, supported, and stigma-free.”
+
+### Long-Term Roadmap
+
+* Doctor Onboarding + Telemedicine
+* Community Sharing & Support Groups
+* Medical Report Analysis with AI
+* Cycle prediction with machine learning
+* Verified Medicinal Device Marketplace
+* Global multilingual deployment
+
+---
+
+## 🤝 Contributing
+
+Contributions, feedback, and research collaborations are welcome!
+
+---
+
+## 📬 Contact
+
+If you want to collaborate or discuss this project, feel free to connect:
+
+**Email:** [nikhilkandhare22@gmail.com](mailto:nikhilkandhare22@gmail.com)
+**Developed by:** Team GCOEY
+
+---
+
+## ⭐ Support the Project
+
+If you believe menstrual care should be accessible to all:
+Give this repo a **star ⭐** and help raise awareness!
+
+---
+
+### 🌸 PeriodCare AI
+
+*AI for Her Health. AI for Her Strength.*
+
+```
+
