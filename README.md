@@ -159,8 +159,8 @@ Contributions, feedback, and research collaborations are welcome!
 
 If you want to collaborate or discuss this project, feel free to connect:
 
-**Email:** [support@periodcare.ai](mailto:support@periodcare.ai) *(replace with yours)*
-**Developed by:** Gramin Poly
+**Email:** [support@periodcare.ai](mailto:nikhilkandhare22@gmail.com)
+**Developed by:** Team GCOEY
 
 ---
 
