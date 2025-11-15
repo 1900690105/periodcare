@@ -21,6 +21,7 @@ def main():
         "C:/Users/Desktop/periodcare/data/generatedbyai/data8.csv",
         "C:/Users/Desktop/periodcare/data/generatedbyai/data9.csv",
         "C:/Users/Desktop/periodcare/data/generatedbyai/data10.csv",
+
         "C:/Users/Desktop/periodcare/data/generatedbyai/data11.csv",
         "C:/Users/Desktop/periodcare/data/generatedbyai/data12.csv",
         "C:/Users/Desktop/periodcare/data/generatedbyai/data13.csv",
@@ -31,9 +32,9 @@ def main():
         "C:/Users/Desktop/periodcare/data/generatedbyai/data18.csv",
         "C:/Users/Desktop/periodcare/data/generatedbyai/data19.txt",
         "C:/Users/Desktop/periodcare/data/generatedbyai/data20.csv",
+
         "C:/Users/Desktop/periodcare/data/generatedbyai/data21.csv",
         "C:/Users/Desktop/periodcare/data/generatedbyai/data22.csv",
-
         "C:/Users/Desktop/periodcare/data/generatedbyai/data23.csv",
         "C:/Users/Desktop/periodcare/data/generatedbyai/data24.csv",
         "C:/Users/Desktop/periodcare/data/generatedbyai/data25.csv",
@@ -42,6 +43,7 @@ def main():
         "C:/Users/Desktop/periodcare/data/generatedbyai/data28.csv",
         "C:/Users/Desktop/periodcare/data/generatedbyai/data29.csv",
         "C:/Users/Desktop/periodcare/data/generatedbyai/data30.csv",
+
         "C:/Users/Desktop/periodcare/data/generatedbyai/data31.csv",
         "C:/Users/Desktop/periodcare/data/generatedbyai/data32.csv",
         "C:/Users/Desktop/periodcare/data/generatedbyai/data33.csv",
@@ -52,10 +54,19 @@ def main():
         "C:/Users/Desktop/periodcare/data/generatedbyai/data38.csv",
         "C:/Users/Desktop/periodcare/data/generatedbyai/data39.csv",
         "C:/Users/Desktop/periodcare/data/generatedbyai/data40.csv",
+
         "C:/Users/Desktop/periodcare/data/generatedbyai/data41.csv",
         "C:/Users/Desktop/periodcare/data/generatedbyai/data42.csv",
         "C:/Users/Desktop/periodcare/data/generatedbyai/data43.csv",
+        "C:/Users/Desktop/periodcare/data/generatedbyai/data44.csv",
+        "C:/Users/Desktop/periodcare/data/generatedbyai/data45.txt",
+        "C:/Users/Desktop/periodcare/data/generatedbyai/data46.csv",
+        "C:/Users/Desktop/periodcare/data/generatedbyai/data47.csv",
         
+        "C:/Users/Desktop/periodcare/data/generatedbyai/data49.csv",
+        "C:/Users/Desktop/periodcare/data/generatedbyai/data50.csv",
+        "C:/Users/Desktop/periodcare/data/generatedbyai/data51.csv",
+
         "C:/Users/Desktop/periodcare/data/pdf/pdf1.pdf",
         "C:/Users/Desktop/periodcare/data/pdf/pdf2.pdf",
         "C:/Users/Desktop/periodcare/data/pdf/pdf3.pdf",
@@ -66,6 +77,7 @@ def main():
         "C:/Users/Desktop/periodcare/data/pdf/pdf8.pdf",
         "C:/Users/Desktop/periodcare/data/pdf/pdf9.pdf",
         "C:/Users/Desktop/periodcare/data/pdf/pdf10.pdf",
+
         "C:/Users/Desktop/periodcare/data/pdf/pdf11.pdf",
         "C:/Users/Desktop/periodcare/data/pdf/pdf12.pdf",
         "C:/Users/Desktop/periodcare/data/pdf/pdf13.pdf",
@@ -76,6 +88,7 @@ def main():
         "C:/Users/Desktop/periodcare/data/pdf/pdf18.pdf",
         "C:/Users/Desktop/periodcare/data/pdf/pdf19.pdf",
         "C:/Users/Desktop/periodcare/data/pdf/pdf20.pdf",
+
         "C:/Users/Desktop/periodcare/data/pdf/pdf21.pdf",
         "C:/Users/Desktop/periodcare/data/pdf/pdf22.pdf",
         "C:/Users/Desktop/periodcare/data/pdf/pdf23.pdf",
@@ -86,9 +99,49 @@ def main():
         "C:/Users/Desktop/periodcare/data/pdf/pdf28.pdf",
         "C:/Users/Desktop/periodcare/data/pdf/pdf29.pdf",
         "C:/Users/Desktop/periodcare/data/pdf/pdf30.pdf",
-        "C:/Users/Desktop/periodcare/data/pdf/pdf31.pdf",
 
-    
+        "C:/Users/Desktop/periodcare/data/pdf/pdf31.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf32.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf33.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf34.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf35.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf36.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf37.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf38.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf39.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf40.pdf",
+
+        "C:/Users/Desktop/periodcare/data/pdf/pdf41.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf42.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf43.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf44.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf45.pdf",   
+        "C:/Users/Desktop/periodcare/data/pdf/pdf46.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf47.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf48.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf49.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf50.pdf",
+
+        "C:/Users/Desktop/periodcare/data/pdf/pdf51.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf52.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf53.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf54.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf55.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf56.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf57.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf58.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf59.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf60.pdf",
+
+        "C:/Users/Desktop/periodcare/data/pdf/pdf61.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf62.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf63.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf64.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf65.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf66.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf67.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf68.pdf",
+        "C:/Users/Desktop/periodcare/data/pdf/pdf69.pdf",
     ]
 
     # ✅ Separate PDFs and text-like files

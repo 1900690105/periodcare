@@ -25,6 +25,7 @@ function NavBar({ setLanguage, language }) {
       about: "About",
       doctor: "Doctor",
       signIn: "Sign In",
+      checkdisease: "Checkdisease",
     },
     hi: {
       education: "शिक्षा",
@@ -32,6 +33,7 @@ function NavBar({ setLanguage, language }) {
       about: "हमारे बारे में",
       doctor: "डॉक्टर",
       signIn: "साइन इन करें",
+      checkdisease: "बीमारी जांच",
     },
     mr: {
       education: "शिक्षण",
@@ -39,6 +41,7 @@ function NavBar({ setLanguage, language }) {
       about: "आमच्याबद्दल",
       doctor: "डॉक्टर",
       signIn: "साइन इन करा",
+      checkdisease: "आजार तपासणी",
     },
   };
 
@@ -64,6 +67,12 @@ function NavBar({ setLanguage, language }) {
                 className="text-gray-700 hover:text-pink-600 transition-colors font-medium"
               >
                 {t.education}
+              </Link>
+              <Link
+                href={"/checkdisease"}
+                className="text-gray-700 hover:text-pink-600 transition-colors font-medium"
+              >
+                {t.checkdisease}
               </Link>
               <Link
                 href={"/community"}
