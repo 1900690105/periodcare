@@ -61,9 +61,9 @@ Each test uses:
 ### Frontend
 - **Next.js 14 (App Router)**
 - **Tailwind CSS**
-- ShadCN UI + Lucide Icons
 
 ### Backend
+- **Python**
 - **FastAPI**
 - **RAG** (Sentence Transformer + ChromaDB)
 - **Ollama (Local LLM: Phi3-mini)**
@@ -108,15 +108,15 @@ periodcare/
 
 ### Backend
 ```sh
-cd backend
-pip install -r requirements.txt
+cd src/app/backend
+pip install fastapi uvicorn chromadb sentence-transformers PyPDF2
+python setup_db.py
 uvicorn main:app --reload
 ````
 
 ### Frontend
 
 ```sh
-cd frontend
 npm install
 npm run dev
 ```
