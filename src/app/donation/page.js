@@ -16,6 +16,7 @@ import {
   Gift,
   Star,
 } from "lucide-react";
+import NavBar from "../components/NavBar";
 
 export default function DonationPage() {
   const [donationType, setDonationType] = useState("one-time");
@@ -54,28 +55,32 @@ export default function DonationPage() {
 
   const stats = [
     {
-      value: "24%",
-      label: "of teens struggle to afford period products",
+      value: "70%",
+      label: "of families cannot afford menstrual products",
       icon: AlertCircle,
       color: "text-rose-500",
+      source: "WHEELS Global Foundation, 2024",
     },
     {
-      value: "33%",
-      label: "miss at least 15 minutes of class due to lack of access",
+      value: "36%",
+      label: "of menstruating women in India use sanitary pads",
       icon: Clock,
       color: "text-purple-500",
+      source: "Dasra Report via Changeincontent, 2024-2025",
     },
     {
-      value: "64%",
-      label: "have asked a friend for products due to inadequate access",
+      value: "64.4%",
+      label: "young women (15-24) use sanitary napkins",
       icon: Users,
       color: "text-pink-500",
+      source: "NFHS-5 (2019-21) analysis, 2024",
     },
     {
-      value: "45%",
-      label: "of Black teens affected by economic pressure on purchasing",
+      value: "50%",
+      label: "young women (15-24) use cloth during periods",
       icon: TrendingUp,
       color: "text-rose-600",
+      source: "DHS Program / NFHS-5, 2024",
     },
   ];
 
@@ -119,6 +124,7 @@ export default function DonationPage() {
 
   return (
     <div className="min-h-screen bg-linear-to-br from-pink-200 via-lavender-100 to-gray-200">
+      <NavBar />
       {/* Hero Section */}
       <div className="relative overflow-hidden  text-white py-20 px-4">
         <div className="absolute inset-0 opacity-10">
@@ -164,6 +170,24 @@ export default function DonationPage() {
           </div>
         </div>
       </div>
+
+      <div className="max-w-8xl mx-auto flex justify-center">
+        <iframe
+          width="700"
+          height="415"
+          className="flex justify-center"
+          src="https://www.youtube.com/embed/5XNY94_g8ng?si=UOYAw_C_AStdDwz6"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        ></iframe>
+      </div>
+      <p className="text-center text-black ">
+        Note: The numbers shown in the video are based on data from 8 years ago.
+        The video is for awareness purposes only.
+      </p>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Crisis Stats */}
@@ -343,7 +367,16 @@ export default function DonationPage() {
                 <li className="flex items-start gap-2">
                   <Check className="w-5 h-5 text-pink-500 shrink-0 mt-0.5" />
                   <span className="text-gray-700 text-sm">
-                    83% improvement in school bathroom access since 2023
+                    70% of families cannot afford menstrual products, leading to
+                    reliance on cheaper or free alternatives.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="w-5 h-5 text-purple-500 shrink-0 mt-0.5" />
+                  <span className="text-gray-700 text-sm">
+                    Only 36% of India&#39;s ~355 million menstruating women use
+                    sanitary pads; the remaining 64% use cloth, husk, ash, or
+                    other substitutes due to cost.
                   </span>
                 </li>
                 <li className="flex items-start gap-2">

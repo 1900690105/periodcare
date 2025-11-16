@@ -22,7 +22,7 @@ function NavBar({ setLanguage, language }) {
     en: {
       education: "Education",
       community: "Community",
-      about: "About",
+      donatepad: "DonatePad",
       doctor: "Doctor",
       signIn: "Sign In",
       checkdisease: "Checkdisease",
@@ -30,7 +30,7 @@ function NavBar({ setLanguage, language }) {
     hi: {
       education: "शिक्षा",
       community: "समुदाय",
-      about: "हमारे बारे में",
+      donatepad: "पैड दान करें",
       doctor: "डॉक्टर",
       signIn: "साइन इन करें",
       checkdisease: "बीमारी जांच",
@@ -38,7 +38,7 @@ function NavBar({ setLanguage, language }) {
     mr: {
       education: "शिक्षण",
       community: "समुदाय",
-      about: "आमच्याबद्दल",
+      donatepad: "पॅड दान करा",
       doctor: "डॉक्टर",
       signIn: "साइन इन करा",
       checkdisease: "आजार तपासणी",
@@ -81,10 +81,10 @@ function NavBar({ setLanguage, language }) {
                 {t.community}
               </Link>
               <Link
-                href="#about"
+                href="/donation"
                 className="text-gray-700 hover:text-pink-600 transition-colors font-medium"
               >
-                {t.about}
+                {t.donatepad}
               </Link>
               <Link
                 href="/doctor"
@@ -147,10 +147,10 @@ function NavBar({ setLanguage, language }) {
                 {t.education}
               </Link>
               <Link
-                href="#about"
+                href="/donation"
                 className="block text-gray-700 hover:text-pink-600 transition-colors font-medium py-2"
               >
-                {t.about}
+                {t.donatepad}
               </Link>
               <Link
                 href="/doctor"
