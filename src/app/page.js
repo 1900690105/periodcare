@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Sparkles, Globe, Heart, Menu, X } from "lucide-react";
 import NavBar from "./components/NavBar";
 import HeroSection from "./components/HeroSection";
@@ -15,6 +15,9 @@ import AIChatbot2 from "./components/chatbot2";
 
 export default function PeriodCareHero() {
   const [language, setLanguage] = useState("mr");
+  const [chatbot, setChatBot] = useState(
+    process.env.NODE_ENV === "development" ? 1 : 2
+  );
 
   return (
     <div className="min-h-screen bg-linear-to-br from-pink-200 via-lavender-100 to-gray-200">
@@ -24,7 +27,11 @@ export default function PeriodCareHero() {
       {/* Hero Section */}
       <HeroSection language={language} />
 
-      <AIChatbot2 lan={language} />
+      {chatbot == 2 ? (
+        <AIChatbot2 lan={language} />
+      ) : (
+        <AIChatbot lan={language} />
+      )}
 
       <FeaturesSection language={language} />
 
