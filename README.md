@@ -49,8 +49,8 @@ All analysis is local or encrypted — **your data is yours**.
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/yourusername/periodcare-ai.git
-cd periodcare-ai
+git clone https://github.com/1900690105/periodcare.git
+cd periodcare
 ````
 
 ### 2️⃣ Install Dependencies
@@ -94,22 +94,6 @@ npm run dev
 
 👉 We exist to **end period poverty, silence, and misinformation**
 
----
-
-## 🛣️ Roadmap
-
-* [x] AI Chatbot
-* [x] Multi-language support
-* [x] Menstrual education content
-* [x] Symptom-based disease assessment
-* [ ] Mobile App (React Native)
-* [ ] Smart cycle tracking with AI insights
-* [ ] Community discussion & support groups
-* [ ] Real-time doctor consultation
-* [ ] AI diet/exercise planner
-
----
-
 ## 👩‍⚕️ Trusted, Verified Information
 
 We collaborate with:
@@ -136,17 +120,15 @@ Create a PR or contact us!
 
 ## 📧 Contact
 
-**Email:** [support@periodcare.ai](mailto:support@periodcare.ai)
-**Website:** [https://periodcare.ai](https://periodcare.ai)
-**Made with ❤️ for every girl**
+**Email:** [nikhilkandhare22@gmail.com](mailto:nikhilkandhare22@gmail.com)
+**Website:** [https://periodcareforyou.vercel.app/](https://periodcareforyou.vercel.app/)
+**Made with ❤️ for every Divya Shakti(Girls)**
 
 ---
 
-> *“Menstrual health is not a privilege. It is a human right.”* 🌷
+> *“Menstrual health is not a privilege. It is a womans right.”* 🌷
 
-```
 
----
 
 ### Want me to customize it further?
 
@@ -157,12 +139,3 @@ I can add:
 ✔ License section  
 ✔ Download buttons (APK/iOS)  
 ✔ Badges (Stars, Issues, PRs, Tech)  
-
-Would you like me to include:
-A) Screenshot mockups  
-B) Live demo section  
-C) Contributing guidelines  
-D) AI dataset + training documentation  
-
-Tell me A / B / C / D — I’ll update instantly! 🚀
-```
