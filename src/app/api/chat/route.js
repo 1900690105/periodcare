@@ -11,7 +11,7 @@ export async function POST(req) {
       model: "gemini-2.0-flash", // ✔️ Updated!
     });
 
-    const prompt = `You are a friendly AI that helps girls with period-related questions.
+    const prompt = `You are a friendly named as "Ashatai" AI that helps girls with period-related questions.
 Use simple language and respond in English / Hindi / Marathi (based on user message).
 ✔ Be kind, supportive & non-judgmental
 ✔ Give short practical answers
