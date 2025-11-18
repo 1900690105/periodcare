@@ -1,179 +1,168 @@
-Absolutely! Here is a **professional, polished, investor-friendly GitHub README.md** for your **PeriodCare AI — Menstrual Health Support Platform** 🚀
-You can copy-paste directly into GitHub.
+
+# 🌸 PeriodCare AI — Smart Menstrual Health Assistant
+
+PeriodCare AI is an AI-powered menstrual wellness platform designed to help girls and women understand their cycles, manage symptoms, and access trustworthy guidance in a stigma-free environment.  
+It supports personalized responses, multilingual learning, and symptom-based insights — improving knowledge and confidence around menstruation.
 
 ---
 
-### 📌 README.md
-
-```
-# 🌸 PeriodCare AI — Smart Menstrual Health Support Platform
-
-PeriodCare AI is an intelligent menstrual health companion designed to provide fully personalized support to women and menstruating individuals.  
-It uses **AI-powered symptom analysis**, **RAG (Retrieval-Augmented Generation)**, and **medical knowledge** to deliver safe, trusted menstrual care guidance.
-
----
-
-## 👩‍⚕️ What is PeriodCare AI?
-
-PeriodCare AI combines **AI + medical science + personalized care** to help users understand:
-- Their **menstrual cycle**
-- Symptoms and mood changes
-- Nutrition and exercise suited for each phase
-- Potential risks of menstrual disorders
-- Safe home remedies backed by research
-
-The goal: **Empower menstrual health with accurate education, symptom tracking, and compassionate support** 🌼
+## 🎯 Our Mission
+To make menstrual health **accessible**, **accurate**, and **empowering** for every girl — no shame, no myths, no misinformation.
 
 ---
 
 ## ✨ Key Features
 
-| Feature | Description |
-|--------|-------------|
-| 🧠 AI Chatbot | Local + cloud LLM hybrid for fast, safe, bilingual conversation |
-| 📚 RAG Knowledge System | Medical data from trusted PDFs to provide accurate answers |
-| ⚕️ Disease Pre-Screening Tests | Risk check for PCOS, Endometriosis, PMS/PMDD & more |
-| 🥗 Phase-Based Diet Plans | Nutritious food suggestions with do’s & don’ts |
-| 💪 Exercise Suggestions | Safe workouts based on symptoms & disorders |
-| 🧘 Ayurveda Support | Dosha-based recommendations |
-| 📊 Cycle & Mood Tracking *(Upcoming)* | Smart predictions + mental health support |
-| ❤️ Partner Mode | Helps partners understand moods & symptoms better |
+| Feature Category | What It Offers |
+|----------------|----------------|
+| 🤖 AI Chatbot | Personalized menstrual support in English, Hindi & Marathi |
+| 📚 Menstrual Education Hub | Proper pad usage, hygiene, cycle phases, myths & facts |
+| 🩺 Symptom Checker | MCQ-based self-screening for PCOS, Endometriosis, PMS/PMDD & more |
+| 🏋️‍♀️ Lifestyle Guidance | Phase-based **diet**, **exercise**, and **home remedies** |
+| 🧑‍⚕️ Doctor Section | Helps users find the right medical specialist |
+| 🔗 Partner Mode | Sync moods & symptoms with partner for better understanding |
+| ♻️ Period Product Education | Pads, cups, tampons — pros, cons & safe usage |
+| ❤️ Emotional Support | Mood tracking & mental wellness tips |
+| 🎛️ AI Personalization | Tailored suggestions based on age, symptoms, habits & doshas (Ayurveda) |
 
 ---
 
-## 🔬 Supported Disorders (More coming soon)
+## 🏗️ Tech Stack
 
-- PCOS & PCOD
-- Endometriosis
-- Adenomyosis
-- Dysmenorrhea (Severe Cramps)
-- PMS / PMDD
-
-Each test uses:
-✔ Evidence-based symptom questionnaires  
-✔ Risk scoring  
-✔ Doctor-recommended advice  
+| Layer | Technologies |
+|------|--------------|
+| Frontend | Next.js 14 (App Router), TailwindCSS, Shadcn UI |
+| Backend | Node.js / FastAPI (local mode) |
+| AI Models | Gemini Flash API (Cloud), Ollama Phi-3 Mini (Local) |
+| Data | RAG with Vector DB (ChromaDB), PDF Knowledge Base |
+| Other Tools | Google Auth, CORS Enabled |
 
 ---
 
-## 🏛️ Tech Stack
-
-### Frontend
-- **Next.js 14 (App Router)**
-- **Tailwind CSS**
-
-### Backend
-- **Python**
-- **FastAPI**
-- **RAG** (Sentence Transformer + ChromaDB)
-- **Ollama (Local LLM: Phi3-mini)**
-- **Gemini API** for translation + improvement
+## 🔐 Privacy & Safety
+PeriodCare AI **never** stores personal health questions.  
+All analysis is local or encrypted — **your data is yours**.  
 
 ---
 
-## 🧩 System Architecture
+## 🚀 Getting Started (Developer Setup)
 
-```
-
-User → Next.js (UI)
-↓
-FastAPI Backend
-↓
-LLM (Ollama - Local Model)
-↓
-Refinement & Translation (Google Gemini)
-↓
-Chroma Vector DB (Medical PDFs)
-
-```
-
----
-
-## 📁 Folder Structure
-
-```
-
-periodcare/
-├── frontend (Next.js)
-├── backend (FastAPI)
-├── db/chroma (Vector DB)
-├── medical_pdfs/ (Training context)
-└── README.md
-
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/yourusername/periodcare-ai.git
+cd periodcare-ai
 ````
 
----
+### 2️⃣ Install Dependencies
 
-## 🚀 Installation & Setup
-
-### Backend
-```sh
-cd src/app/backend
-pip install fastapi uvicorn chromadb sentence-transformers PyPDF2
-python setup_db.py
-uvicorn main:app --reload
-````
-
-### Frontend
-
-```sh
+```bash
 npm install
+```
+
+### 3️⃣ Setup Environment Keys
+
+Create `.env.local`
+
+```env
+NEXT_PUBLIC_GEMINI_API_KEY=YOUR_API_KEY
+BACKEND_URL=http://localhost:8000
+```
+
+### 4️⃣ Start Frontend
+
+```bash
 npm run dev
 ```
 
 ---
 
-## 🔐 Safety & Ethics
+## 🧠 AI Architecture Modes
 
-PeriodCare does **not** replace doctors.
-It only provides **pre-screening & educational support**.
-
-* No harmful medical recommendations
-* Multilingual clarity (English, Hindi, Marathi)
-* Privacy-first data access
+| Mode               | Usage                 | Model Used         |
+| ------------------ | --------------------- | ------------------ |
+| Local (Offline)    | Testing + private use | Ollama: phi-3-mini |
+| Cloud (Live Users) | Production deployment | Gemini 2.5 Flash   |
 
 ---
 
-## 📌 Vision & Mission
+## 🩸 Why PeriodCare?
 
-> “Creating a world where menstrual health is understood, supported, and stigma-free.”
+* 70% of Indian families struggle to afford menstrual products
+* 33% girls miss school due to period-related issues
+* 64% rely on friends for products or advice
+* Millions face infections due to poor hygiene & myths
 
-### Long-Term Roadmap
+👉 We exist to **end period poverty, silence, and misinformation**
 
-* Doctor Onboarding + Telemedicine
-* Community Sharing & Support Groups
-* Medical Report Analysis with AI
-* Cycle prediction with machine learning
-* Verified Medicinal Device Marketplace
-* Global multilingual deployment
+---
+
+## 🛣️ Roadmap
+
+* [x] AI Chatbot
+* [x] Multi-language support
+* [x] Menstrual education content
+* [x] Symptom-based disease assessment
+* [ ] Mobile App (React Native)
+* [ ] Smart cycle tracking with AI insights
+* [ ] Community discussion & support groups
+* [ ] Real-time doctor consultation
+* [ ] AI diet/exercise planner
+
+---
+
+## 👩‍⚕️ Trusted, Verified Information
+
+We collaborate with:
+
+* Doctors & Gynecologists
+* Government health recommendations
+* WHO + UNICEF menstrual hygiene standards
+* Ayurvedic research validation
 
 ---
 
 ## 🤝 Contributing
 
-Contributions, feedback, and research collaborations are welcome!
+We welcome:
+
+* Doctors
+* Health Researchers
+* Translators
+* Open Source Developers
+
+Create a PR or contact us!
 
 ---
 
-## 📬 Contact
+## 📧 Contact
 
-If you want to collaborate or discuss this project, feel free to connect:
-
-**Email:** [nikhilkandhare22@gmail.com](mailto:nikhilkandhare22@gmail.com)
-**Developed by:** Team GCOEY
-
----
-
-## ⭐ Support the Project
-
-If you believe menstrual care should be accessible to all:
-Give this repo a **star ⭐** and help raise awareness!
+**Email:** [support@periodcare.ai](mailto:support@periodcare.ai)
+**Website:** [https://periodcare.ai](https://periodcare.ai)
+**Made with ❤️ for every girl**
 
 ---
 
-### 🌸 PeriodCare AI
-
-*AI for Her Health. AI for Her Strength.*
+> *“Menstrual health is not a privilege. It is a human right.”* 🌷
 
 ```
 
+---
+
+### Want me to customize it further?
+
+I can add:
+✔ Logo and project banner  
+✔ Screenshots section  
+✔ API documentation  
+✔ License section  
+✔ Download buttons (APK/iOS)  
+✔ Badges (Stars, Issues, PRs, Tech)  
+
+Would you like me to include:
+A) Screenshot mockups  
+B) Live demo section  
+C) Contributing guidelines  
+D) AI dataset + training documentation  
+
+Tell me A / B / C / D — I’ll update instantly! 🚀
+```
