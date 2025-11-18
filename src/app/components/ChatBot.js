@@ -17,7 +17,7 @@ export default function AIChatbot({ lan }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [isOnline, setIsOnline] = useState(true);
-  const [language, setLanguage] = useState("English");
+  const [language, setLanguage] = useState(lan || "English");
   const [activeCategory, setActiveCategory] = useState("all");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([
