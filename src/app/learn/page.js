@@ -26,10 +26,10 @@ export default function EducationPage() {
       <div className="min-h-screen bg-linear-to-br from-pink-200 via-lavender-100 to-gray-200">
         <NavBar setLanguage={setLanguage} language={language} />
         {/* Hero / Intro Section */}
-        <IntroSection />
-        <ExploreLearningModules />
-        <VisualLearningCarousel />
-        <MenstrualHealthQuiz />
+        <IntroSection language={language} />
+        <ExploreLearningModules language={language} />
+        <VisualLearningCarousel language={language} />
+        <MenstrualHealthQuiz language={language} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pb-20">
           <div className="bg-linear-to-r from-pink-500 to-rose-500 rounded-3xl shadow-2xl p-8 md:p-12 text-center text-white">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">

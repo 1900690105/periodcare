@@ -1,6 +1,17 @@
-import { ArrowRight, Video } from "lucide-react";
+import { ArrowRight, Video, X } from "lucide-react";
 import Image from "next/image";
 import React from "react";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
 function ExploreLearningModules() {
   return (
@@ -87,7 +98,12 @@ function ExploreLearningModules() {
                   maximum comfort and hygiene. Understand when to change and how
                   often.
                 </p>
-                <button className="w-full bg-linear-to-r from-blue-500 to-cyan-500 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all flex items-center justify-center space-x-2 group-hover:scale-105">
+                <button
+                  onClick={() => {
+                    window.location.href = `/learn/hygiene&care?id=proper_pad_usage`;
+                  }}
+                  className="w-full bg-linear-to-r from-blue-500 to-cyan-500 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all flex items-center justify-center space-x-2 group-hover:scale-105"
+                >
                   <span>Read More</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
@@ -135,7 +151,12 @@ function ExploreLearningModules() {
                   Discover why maintaining proper hygiene during menstruation is
                   crucial for preventing infections and staying healthy.
                 </p>
-                <button className="w-full bg-linear-to-r from-teal-500 to-emerald-500 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all flex items-center justify-center space-x-2 group-hover:scale-105">
+                <button
+                  onClick={() => {
+                    window.location.href = `/learn/hygiene&care?id=importance_of_cleanliness`;
+                  }}
+                  className="w-full bg-linear-to-r from-teal-500 to-emerald-500 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all flex items-center justify-center space-x-2 group-hover:scale-105"
+                >
                   <span>Read More</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
@@ -194,7 +215,12 @@ function ExploreLearningModules() {
                   Learn the environmentally friendly and hygienic ways to
                   dispose of menstrual products properly and safely.
                 </p>
-                <button className="w-full bg-linear-to-r from-green-500 to-lime-500 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all flex items-center justify-center space-x-2 group-hover:scale-105">
+                <button
+                  onClick={() => {
+                    window.location.href = `/learn/hygiene&care?id=safe_disposal_practices`;
+                  }}
+                  className="w-full bg-linear-to-r from-green-500 to-lime-500 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all flex items-center justify-center space-x-2 group-hover:scale-105"
+                >
                   <Video className="w-4 h-4" />
                   <span>Watch Video</span>
                 </button>
@@ -244,7 +270,12 @@ function ExploreLearningModules() {
                   Break free from false beliefs about washing, eating habits,
                   and activities during menstruation. Get the facts!
                 </p>
-                <button className="w-full bg-linear-to-r from-red-500 to-orange-500 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all flex items-center justify-center space-x-2 group-hover:scale-105">
+                <button
+                  onClick={() => {
+                    window.location.href = `/learn/hygiene&care?id=myths_about_periods`;
+                  }}
+                  className="w-full bg-linear-to-r from-red-500 to-orange-500 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all flex items-center justify-center space-x-2 group-hover:scale-105"
+                >
                   <span>Read More</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
@@ -359,6 +390,9 @@ function ExploreLearningModules() {
                   </div>
 
                   <button
+                    onClick={() => {
+                      window.location.href = `/learn/cycle`;
+                    }}
                     className={`mt-4 w-full bg-linear-to-r ${phase.buttonColor} text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all flex items-center justify-center space-x-2`}
                   >
                     {phase.icon}
@@ -416,10 +450,36 @@ function ExploreLearningModules() {
                   Discover the best foods to eat during each phase of your cycle
                   for optimal energy and wellness.
                 </p>
-                <button className="bg-linear-to-r from-green-500 to-emerald-500 text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition-all flex items-center space-x-2">
-                  <span>Read More</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
+
+                <AlertDialog>
+                  <AlertDialogTrigger>
+                    <p className="bg-linear-to-r from-green-500 to-emerald-500 text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition-all flex items-center space-x-2">
+                      <Video className="w-4 h-4" />
+                      <span>Watch Now</span>
+                    </p>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent className=" w-[480px] md:w-[750px]  h-[415px]">
+                    <AlertDialogHeader>
+                      <AlertDialogTitle className="flex justify-between">
+                        Nutrition Guide
+                        <AlertDialogCancel>
+                          <X />
+                        </AlertDialogCancel>
+                      </AlertDialogTitle>
+                      <AlertDialogDescription>
+                        <iframe
+                          className="w-[350px] md:w-[450px] h-[220px] md:h-[300px]"
+                          src="https://www.youtube.com/embed/E-8gvJlkY8c?si=5txIrYoR0N8kOIyn"
+                          title="YouTube video player"
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          referrerPolicy="strict-origin-when-cross-origin"
+                          allowFullScreen
+                        ></iframe>
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                  </AlertDialogContent>
+                </AlertDialog>
               </div>
             </div>
 
@@ -446,10 +506,38 @@ function ExploreLearningModules() {
                   Safe and effective exercises for each phase of your menstrual
                   cycle, from yoga to cardio.
                 </p>
-                <button className="bg-linear-to-r from-purple-500 to-indigo-500 text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition-all flex items-center space-x-2">
-                  <Video className="w-4 h-4" />
-                  <span>Watch Now</span>
-                </button>
+
+                <AlertDialog>
+                  <AlertDialogTrigger>
+                    <p className="bg-linear-to-r from-purple-500 to-indigo-500 text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition-all flex items-center space-x-2">
+                      <Video className="w-4 h-4" />
+                      <span>Watch Now</span>
+                    </p>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent className=" w-[480px] md:w-[750px]  h-[415px]">
+                    <AlertDialogHeader>
+                      <AlertDialogTitle className="flex justify-between">
+                        Exercise Tips
+                        <AlertDialogCancel>
+                          <X />
+                        </AlertDialogCancel>
+                      </AlertDialogTitle>
+                      <AlertDialogDescription>
+                        <div>
+                          <iframe
+                            className="w-[350px] md:w-[450px] h-[220px] md:h-[300px]"
+                            src="https://www.youtube.com/embed/gs1KP-adBis?si=HF4z_IIiufw2pXwB"
+                            title="YouTube video player"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerPolicy="strict-origin-when-cross-origin"
+                            allowFullScreen
+                          ></iframe>
+                        </div>
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                  </AlertDialogContent>
+                </AlertDialog>
               </div>
             </div>
           </div>

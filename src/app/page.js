@@ -11,6 +11,7 @@ import StateSection from "./components/StateSection";
 import PeriodCareCommunity from "./components/Community";
 import PrivacySecurity from "./components/Privacy";
 import PeriodCareFooter from "./components/Footer";
+import AIChatbot2 from "./components/chatbot2";
 
 export default function PeriodCareHero() {
   const [language, setLanguage] = useState("mr");
@@ -23,7 +24,7 @@ export default function PeriodCareHero() {
       {/* Hero Section */}
       <HeroSection language={language} />
 
-      <AIChatbot lan={language} />
+      <AIChatbot2 lan={language} />
 
       <FeaturesSection language={language} />
 
