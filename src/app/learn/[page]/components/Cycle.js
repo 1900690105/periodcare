@@ -8,9 +8,12 @@ import {
   Heart,
   Sparkles,
 } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 
 const Cycle = () => {
-  const [selectedLang, setSelectedLang] = useState("en");
+  const params = useSearchParams();
+  const lan = params.get("lang") || "en";
+  const [selectedLang, setSelectedLang] = useState(lan || "en");
   const [expandedPhase, setExpandedPhase] = useState(null);
   const [activeTab, setActiveTab] = useState({});
 
@@ -287,7 +290,7 @@ const Cycle = () => {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-pink-50 via-purple-50 to-blue-50">
+    <div className="min-h-screen bg-linear-to-br from-pink-200 via-lavender-100 to-gray-200">
       {/* Header */}
       <div className="bg-white shadow-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">

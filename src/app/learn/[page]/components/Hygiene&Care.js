@@ -11,7 +11,7 @@ import {
   X,
 } from "lucide-react";
 
-const Chapter = () => {
+const HygieneCare = () => {
   const [selectedChapter, setSelectedChapter] = useState(null);
   const [expandedSection, setExpandedSection] = useState(0);
 
@@ -205,7 +205,7 @@ const Chapter = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-pink-50 via-purple-50 to-blue-50 p-4 md:p-8">
+    <div className="min-h-screen bg-linear-to-br from-pink-200 via-lavender-100 to-gray-200 p-4 md:p-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8 text-center">
@@ -426,4 +426,4 @@ const Chapter = () => {
   );
 };
 
-export default Chapter;
+export default HygieneCare;

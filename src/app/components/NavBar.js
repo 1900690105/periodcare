@@ -64,7 +64,11 @@ function NavBar({ setLanguage, language }) {
       { name: "Learn", path: `/learn?lang=${language}` },
       { name: "Cycle", path: `/learn/cycle?lang=${language}` },
       { name: "FirstPeriod", path: `/learn/firstperiod?lang=${language}` },
-      { name: "Hygiene", path: `/learn/hygiene&care?lang=${language}` },
+      { name: "Hygiene", path: `/learn/hygienecare?lang=${language}` },
+      {
+        name: "NutritionTracker",
+        path: `/learn/nutritiontracker?lang=${language}`,
+      },
     ],
     community: [
       { name: "Community1", path: "/community/community1" },

@@ -32,6 +32,8 @@ import PeriodCareFooter from "@/app/components/Footer";
 import { useSearchParams } from "next/navigation";
 
 export default function FirstPeriodGuide() {
+  const params = useSearchParams();
+  const lan = params.get("lang") || "en";
   const [checklist, setChecklist] = useState({
     pad: false,
     tissue: false,
@@ -42,8 +44,6 @@ export default function FirstPeriodGuide() {
   });
   const [selectedMood, setSelectedMood] = useState(null);
   const [notificationsEnabled, setNotificationsEnabled] = useState(false);
-  const params = useSearchParams();
-  const lan = params.get("lan") || "en";
   const [language, setLanguage] = useState(lan || "en");
 
   const translations = {
@@ -196,7 +196,7 @@ export default function FirstPeriodGuide() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-pink-50 via-purple-50 to-blue-50">
+    <div className="min-h-screen bg-linear-to-br from-pink-200 via-lavender-100 to-gray-200">
       {/* Language Toggle */}
       <div className="fixed top-4 right-4 z-50 flex gap-2 bg-white rounded-full shadow-lg p-2">
         {["en", "hi", "mr"].map((lang) => (
