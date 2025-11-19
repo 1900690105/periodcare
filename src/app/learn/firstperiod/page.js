@@ -29,6 +29,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import PeriodCareFooter from "@/app/components/Footer";
+import { useSearchParams } from "next/navigation";
 
 export default function FirstPeriodGuide() {
   const [checklist, setChecklist] = useState({
@@ -41,12 +42,9 @@ export default function FirstPeriodGuide() {
   });
   const [selectedMood, setSelectedMood] = useState(null);
   const [notificationsEnabled, setNotificationsEnabled] = useState(false);
-  const [language, setLanguage] = useState(() => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem("language") || "en";
-    }
-    return "en"; // fallback for SSR
-  });
+  const params = useSearchParams();
+  const lan = params.get("lan");
+  const [language, setLanguage] = useState(lan || "en");
 
   const translations = {
     en: {
