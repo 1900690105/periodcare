@@ -14,7 +14,7 @@ import PeriodCareFooter from "./components/Footer";
 import AIChatbot2 from "./components/chatbot2";
 
 export default function PeriodCareHero() {
-  const [language, setLanguage] = useState("mr");
+  const [language, setLanguage] = useState("en");
   const [chatbot, setChatBot] = useState(
     process.env.NODE_ENV === "development" ? 1 : 2
   );

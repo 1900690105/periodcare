@@ -61,29 +61,29 @@ function NavBar({ setLanguage, language }) {
 
   const subMenus = {
     education: [
-      { name: "Learn", path: `/learn?lang=${language}` },
-      { name: "Cycle", path: `/learn/cycle?lang=${language}` },
-      { name: "FirstPeriod", path: `/learn/firstperiod?lang=${language}` },
-      { name: "Hygiene", path: `/learn/hygienecare?lang=${language}` },
+      { name: "Learn", path: `/learn?lang=${language || "en"}` },
+      { name: "Cycle", path: `/learn/cycle?lang=${language || "en"}` },
+      {
+        name: "FirstPeriod",
+        path: `/learn/firstperiod?lang=${language || "en"}`,
+      },
+      { name: "Hygiene", path: `/learn/hygienecare?lang=${language || "en"}` },
       {
         name: "NutritionTracker",
-        path: `/learn/nutritiontracker?lang=${language}`,
+        path: `/learn/nutritiontracker?lang=${language || "en"}`,
       },
     ],
     community: [
       { name: "Community1", path: "/community/community1" },
       { name: "Community2", path: "/community/community2" },
     ],
-    donatepad: [
-      { name: "DonatePad1", path: "/donation/donatepad1" },
-      { name: "DonatePad2", path: "/donation/donatepad2" },
-    ],
+    donatepad: [{ name: "DonatePad", path: "/donation" }],
     doctor: [
-      { name: "Doctor1", path: "/doctor/doctor1" },
-      { name: "Doctor2", path: "/doctor/doctor2" },
+      { name: "All Doctor", path: "/#" },
+      { name: "DoctorLogin", path: "/#" },
     ],
     checkdisease: [
-      { name: "Checkdisease1", path: "/checkdisease/checkdisease1" },
+      { name: "CheckDisease", path: `/checkdisease?lang=${language || "en"}` },
       { name: "Checkdisease2", path: "/checkdisease/checkdisease2" },
     ],
   };

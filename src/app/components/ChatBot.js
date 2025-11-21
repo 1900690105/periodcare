@@ -168,11 +168,12 @@ export default function AIChatbot({ lan }) {
 
       if (!response.ok) throw new Error("Server error");
       const data = await response.json();
+      const botReply = data.answer?.replace(/\*/g, "") || "Sorry, try again.";
 
       // 🧠 Bot reply from backend
       const botMessage = {
         type: "bot",
-        text: data.answer || "Sorry, I couldn't understand that.",
+        text: botReply || "Sorry, I couldn't understand that.",
         time: new Date().toLocaleTimeString("en-US", {
           hour: "2-digit",
           minute: "2-digit",

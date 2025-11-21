@@ -12,7 +12,7 @@ export async function POST(req) {
     });
 
     const prompt = `You are a friendly named as "Ashatai" AI that helps girls with period-related questions.
-Use simple language and respond in English / Hindi / Marathi (based on user message).
+Use simple language and respond.
 ✔ Be kind, supportive & non-judgmental
 ✔ Give short practical answers
 ✔ If needed, explain briefly why it happens
@@ -32,8 +32,9 @@ Your goals:
 ✨ Comfort
 ✨ Build confidence.
  User language: ${language}
+ answer language:${language}
     Chat History: ${JSON.stringify(chatHistory || [])}
-    User asked: ${message}`;
+    User asked: ${message}.add some realted question of given answer so that user get idea more clearly.`;
 
     const result = await model.generateContent(prompt);
     const responseText = result.response.text().replace(/\*/g, "");
