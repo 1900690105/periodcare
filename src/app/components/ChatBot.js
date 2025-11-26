@@ -30,6 +30,27 @@ export default function AIChatbot({ lan }) {
   ]);
   const [isTyping, setIsTyping] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [userData, setUserData] = useState({
+    user_profile: {
+      name: "Ananya",
+      age: 14,
+      weight: 45,
+      bloodGroup: "B+",
+      religion: "Hindu",
+      state: "Maharashtra",
+      country: "India",
+      maritalStatus: "Unmarried",
+      firstPeriodAge: 13,
+      dietType: "Vegetarian",
+      allergies: ["mushroom"],
+      preferredHealing: ["Home Remedies", "Ayurveda"],
+      period_start: "2025-02-14",
+      cycle_length: "32",
+      period_duration: "5",
+      mood: "Sensitive",
+      crampSeverity: 6,
+    },
+  });
   const messagesEndRef = useRef(null);
 
   useEffect(() => {
@@ -162,13 +183,44 @@ export default function AIChatbot({ lan }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           question: msgText,
-          language: language || "en", // You can store language in state
+          language: language || "en",
+          user_description: `
+${userData?.user_profile?.name} is a ${userData?.user_profile?.age}-year-old ${(
+            userData?.user_profile?.maritalStatus || ""
+          ).toLowerCase()} girl who follows a ${(
+            userData?.user_profile?.dietType || ""
+          ).toLowerCase()} diet.
+
+She started her first period at age ${userData?.user_profile?.firstPeriodAge} 
+and currently has an average cycle length of ${
+            userData?.user_profile?.cycle_length
+          } days 
+with a period duration of around ${
+            userData?.user_profile?.period_duration
+          } days.
+
+Her recent mood suggests she often feels ${(
+            userData?.user_profile?.mood || ""
+          ).toLowerCase()}, and she rates her cramp severity at ${
+            userData?.user_profile?.crampSeverity
+          }/10.
+
+She prefers ${
+            userData?.user_profile?.preferredHealing?.join(", ") ||
+            "no specific methods"
+          } for comfort and avoids foods she is allergic to, such as ${
+            userData?.user_profile?.allergies?.join(", ") || "none"
+          }.
+
+This information helps personalize period, nutrition, and mood support for her.
+`,
         }),
       });
 
       if (!response.ok) throw new Error("Server error");
       const data = await response.json();
       const botReply = data.answer?.replace(/\*/g, "") || "Sorry, try again.";
+      console.log(data);
 
       // 🧠 Bot reply from backend
       const botMessage = {

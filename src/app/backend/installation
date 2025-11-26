@@ -1,8 +1,17 @@
+🧩 How to test locally
+
+Put your PDF inside data/docs.pdf.
+
+1.Install dependencies:
 pip install fastapi uvicorn chromadb sentence-transformers PyPDF2
 
+2.Install and run Ollama (ollama.com/download), pull a model:
+ollama pull phi3:mini
 
-step1:upload dataset
-python setup_db.python
+3:upload dataset
+python setup_db.py
 
-step2:After success fully complete data update
+4.Run:
 python -m uvicorn app:app --reload
+
+5.Visit http://localhost:8000/docs → interactive Swagger UI → test /chat.

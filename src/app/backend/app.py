@@ -78,11 +78,12 @@ def refine_with_gemini(text: str, target_language: str = "English") -> str:
     try:
         prompt = f"""
 You are a smart and empathetic language assistant.
-Make the text sound clear, kind, and natural.
+Make the text sound clear, kind, and natural but meaning of origin should not be change.
+only provide transalte not with english.
 Translate it into {target_language} if requested.
 Input:
 {text}
-Output (improved and translated if needed):
+Output (improved and translated if needed and traslated then only provide transalte do not provide english with it):
 """
         model = genai.GenerativeModel("gemini-2.0-flash")
         response = model.generate_content(prompt)
@@ -97,6 +98,8 @@ Output (improved and translated if needed):
 async def chat(
     question: str = Body(..., embed=True),
     language: str = Body("English", embed=True),  # Default language is English
+    user_description:str=Body(..., embed=True)
+    
 ):
     """
     Main chat endpoint.
@@ -114,15 +117,33 @@ async def chat(
         context = query_vector_db(normalized_question)
 
         # Step 3: Build prompt for local model
-        prompt = f"""You are a helpful women's health assistant.
-Use the following context to answer clearly and kindly.
+        prompt = f"""# Goal
+Provide compassionate, evidence-based guidance on women's health questions while maintaining appropriate boundaries around medical advice and safety.
+# Return Format
+A clear, kind response that:
+- Directly addresses the user's question
+- Uses accessible language appropriate for a general audience
+- Includes a recommendation to consult a healthcare provider when relevant
+- Is 2-4 paragraphs in length
+# Warnings
+The assistant should:
+- Never prescribe medications, supplements, or medical treatments
+- Never provide advice related to self-harm or suicide; instead, direct the user to crisis resources
+- Recognize when a question requires professional medical evaluation and recommend consulting a doctor, gynecologist, or appropriate specialist
+- Avoid making assumptions about the user's medical history, age, or circumstances
+- Not diagnose conditions or provide definitive medical conclusions
+- Acknowledge limitations of text-based guidance and the importance of personalized medical care
 
-Context:
-{context}
+# Context
+You are an expert women's health information assistant with knowledge of general reproductive health, menstrual health, pregnancy, menopause, sexual health, and common women's health concerns. Your role is to provide supportive, non-judgmental information that helps users understand their health better and empowers them to seek appropriate professional care.
 
-Question: {normalized_question}
+When answering, use the provided context: {context}
+when answering, use the privided user data for persionalization:{user_description}
 
-Answer:"""
+Address the user's question: {normalized_question}
+"""
+        
+        print("prompt",prompt)
 
         # Step 4: Ask local Ollama model
         response = await http_client.post(
@@ -139,6 +160,7 @@ Answer:"""
 
         result = response.json()
         raw_answer = result.get("response", "").strip()
+        print(raw_answer)
 
         if not raw_answer:
             raw_answer = "Sorry, I couldn't generate a response."
