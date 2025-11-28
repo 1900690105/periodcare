@@ -78,13 +78,15 @@ def refine_with_gemini(text: str, target_language: str = "English") -> str:
     try:
         prompt = f"""
 You are a smart and empathetic language assistant.
-Make the text sound clear, kind, and natural but meaning of origin should not be change.
+Make the text sound clear, kind, and natural but meaning of contaxt should be origin cotaxt and meaning should not be change.
 only provide transalte not with english.
 Translate it into {target_language} if requested.
 Input:
 {text}
 Output (improved and translated if needed and traslated then only provide transalte do not provide english with it):
 """
+
+
         model = genai.GenerativeModel("gemini-2.0-flash")
         response = model.generate_content(prompt)
         return response.text.strip()
