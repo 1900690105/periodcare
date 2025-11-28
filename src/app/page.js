@@ -21,6 +21,7 @@ export default function PeriodCareHero() {
 
   return (
     <div className="min-h-screen bg-linear-to-br from-pink-200 via-lavender-100 to-gray-200">
+      {/* Navigation */}
       <NavBar setLanguage={setLanguage} language={language} />
 
       {/* Hero Section */}
