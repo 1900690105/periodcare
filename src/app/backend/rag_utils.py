@@ -56,8 +56,6 @@ def build_vector_db_multi(file_paths):
         print("❌ No text extracted. Nothing to build.")
         return
 
-    # ✨ Replace this section with your vector DB logic
-    # Example placeholder:
     print("🚀 Building vector database (embedding step here)...")
     # build_embeddings(all_texts)  <-- your actual implementation
 

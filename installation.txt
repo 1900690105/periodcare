@@ -1,0 +1,34 @@
+step1:
+https://nodejs.org/en/download 
+
+step2:install git(optional)
+https://git-scm.com/install/
+
+step3:clone repo
+git clone https://github.com/1900690105/periodcare.git (if git available)
+or
+https://github.com/1900690105/periodcare (download zip file and extract)
+
+step4:install this in backend
+    i) pip install fastapi uvicorn chromadb sentence-transformers PyPDF2 google.generativeai
+   ii) 
+
+step5:in backend forlder
+    i) https://ollama.com/download/windows
+   ii) ollama pull phi3:mini
+
+step6:store all data localy doenload zip and compress them 
+https://drive.google.com/drive/folders/1JqGN_kYtyE-c3k6Jkm7XMtScerKLZW1V?usp=sharing
+
+step7:make sure to change folder path should be correct
+
+step8:in backend folder
+python setup_db.py
+
+step9:in backend folder
+python -m uvicorn app:app --reload
+Visit http://localhost:8000/docs → interactive Swagger UI → test /chat.
+
+step10:in frontend for nextjs
+    i)npm run dev
+   ii)visit http://localhost:3000

@@ -27,7 +27,12 @@ export default function AuthForms() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    if (isLogin) {
+      alert(`welcome back to period care`);
+      window.location.href = "/dashbaord";
+    }
+    alert(`welcome to period care ${formData.name}`);
+    window.location.href = "/userdata";
   };
 
   const handleGoogleLogin = () => {
