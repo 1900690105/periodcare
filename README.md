@@ -129,13 +129,3 @@ Create a PR or contact us!
 > *“Menstrual health is not a privilege. It is a womans right.”* 🌷
 
 
-
-### Want me to customize it further?
-
-I can add:
-✔ Logo and project banner  
-✔ Screenshots section  
-✔ API documentation  
-✔ License section  
-✔ Download buttons (APK/iOS)  
-✔ Badges (Stars, Issues, PRs, Tech)  
