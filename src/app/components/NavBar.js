@@ -73,10 +73,7 @@ function NavBar({ setLanguage, language }) {
         path: `/learn/nutritiontracker?lang=${language || "en"}`,
       },
     ],
-    community: [
-      { name: "Community1", path: "/community/community1" },
-      { name: "Community2", path: "/community/community2" },
-    ],
+    community: [{ name: "Community1", path: "/community" }],
     donatepad: [{ name: "DonatePad", path: "/donation" }],
     doctor: [
       { name: "All Doctor", path: "/doctor" },

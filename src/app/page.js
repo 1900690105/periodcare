@@ -27,11 +27,7 @@ export default function PeriodCareHero() {
       {/* Hero Section */}
       <HeroSection language={language} />
 
-      {chatbot == 2 ? (
-        <AIChatbot2 lan={language} />
-      ) : (
-        <AIChatbot lan={language} />
-      )}
+      <AIChatbot lan={language} />
 
       <FeaturesSection language={language} />
 
