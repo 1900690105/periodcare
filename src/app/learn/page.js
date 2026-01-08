@@ -28,7 +28,7 @@ export default function EducationPage() {
         {/* Hero / Intro Section */}
         <IntroSection language={language} />
         <ExploreLearningModules language={language} />
-        <VisualLearningCarousel language={language} />
+        {/* <VisualLearningCarousel language={language} /> */}
         <MenstrualHealthQuiz language={language} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pb-20">
           <div className="bg-linear-to-r from-pink-500 to-rose-500 rounded-3xl shadow-2xl p-8 md:p-12 text-center text-white">
