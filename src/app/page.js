@@ -16,7 +16,7 @@ import AIChatbot2 from "./components/chatbot2";
 export default function PeriodCareHero() {
   const [language, setLanguage] = useState("en");
   const [chatbot, setChatBot] = useState(
-    process.env.NODE_ENV === "development" ? 1 : 2
+    process.env.NODE_ENV === "development" ? 1 : 2,
   );
 
   return (
@@ -26,6 +26,8 @@ export default function PeriodCareHero() {
 
       {/* Hero Section */}
       <HeroSection language={language} />
+
+      {/* {chatbot == 2 ? <AIChatbot lan={language} /> : <AIChatbot2 />} */}
 
       <AIChatbot lan={language} />
 

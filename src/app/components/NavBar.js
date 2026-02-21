@@ -36,6 +36,7 @@ function NavBar({ setLanguage, language }) {
       community: "Community",
       donatepad: "DonatePad",
       doctor: "Doctor",
+      dailyscan: "DailyScan",
       signIn: "Sign In",
       checkdisease: "Checkdisease",
     },
@@ -45,6 +46,7 @@ function NavBar({ setLanguage, language }) {
       donatepad: "पैड दान करें",
       doctor: "डॉक्टर",
       signIn: "साइन इन करें",
+      dailyscan: "DailyScan",
       checkdisease: "बीमारी जांच",
     },
     mr: {
@@ -53,6 +55,7 @@ function NavBar({ setLanguage, language }) {
       donatepad: "पॅड दान करा",
       doctor: "डॉक्टर",
       signIn: "साइन इन करा",
+      dailyscan: "DailyScan",
       checkdisease: "आजार तपासणी",
     },
   };
@@ -73,7 +76,8 @@ function NavBar({ setLanguage, language }) {
         path: `/learn/nutritiontracker?lang=${language || "en"}`,
       },
     ],
-    community: [{ name: "Community1", path: "/community" }],
+    community: [{ name: "Community", path: "/community" }],
+    dailyscan: [{ name: "Daily Scan", path: "/dailyscan" }],
     donatepad: [{ name: "DonatePad", path: "/donation" }],
     doctor: [
       { name: "All Doctor", path: "/doctor" },
@@ -81,7 +85,7 @@ function NavBar({ setLanguage, language }) {
     ],
     checkdisease: [
       { name: "CheckDisease", path: `/checkdisease?lang=${language || "en"}` },
-      { name: "Checkdisease2", path: "/checkdisease/checkdisease2" },
+      { name: "DiseaseInfo", path: "/checkdisease/diseasevideo" },
     ],
   };
 
@@ -89,6 +93,7 @@ function NavBar({ setLanguage, language }) {
     "education",
     "community",
     "donatepad",
+    "dailyscan",
     "doctor",
     "checkdisease",
   ];
@@ -155,7 +160,7 @@ function NavBar({ setLanguage, language }) {
             </div>
 
             <button
-              onClick={() => (window.location.href = "/createaccount")}
+              onClick={() => (window.location.href = "/userauth")}
               className="bg-pink-500 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
             >
               {t.signIn}

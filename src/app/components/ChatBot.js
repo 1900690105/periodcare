@@ -23,7 +23,7 @@ export default function AIChatbot({ lan }) {
   const [messages, setMessages] = useState([
     {
       type: "bot",
-      text: "Hello! 💜 I'm your PeriodCare AI assistant. How can I support you today?",
+      text: "Hello! I'm  AshaTai your PeriodCare AI assistant. How can I support you today?",
       category: "general",
       time: "10:30 AM",
     },
@@ -177,7 +177,6 @@ export default function AIChatbot({ lan }) {
     setIsTyping(true);
 
     try {
-      // 🔥 Send message to backend API
       const response = await fetch("http://127.0.0.1:8000/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -185,7 +184,9 @@ export default function AIChatbot({ lan }) {
           question: msgText,
           language: language || "en",
           user_description: `
-${userData?.user_profile?.name} is a ${userData?.user_profile?.age}-year-old ${(
+          ${userData?.user_profile?.name} is a ${
+            userData?.user_profile?.age
+          }-year-old ${(
             userData?.user_profile?.maritalStatus || ""
           ).toLowerCase()} girl who follows a ${(
             userData?.user_profile?.dietType || ""
