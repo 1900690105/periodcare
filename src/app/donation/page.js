@@ -208,7 +208,7 @@ export default function DonationPage() {
               The Crisis in Numbers
             </h2>
             <p className="text-center text-gray-600 mb-12 text-lg">
-              Based on the 2025 State of the Period Study
+              Based on the 2026 State of the Period Study
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

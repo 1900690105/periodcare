@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   User,
   Calendar,
@@ -13,13 +13,13 @@ import {
   AlertCircle,
   Volume2,
 } from "lucide-react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "@/lib/firebase";
 
 export default function OnboardingForm() {
   const [step, setStep] = useState(1);
   const [errors, setErrors] = useState({});
   const [uiLanguage, setUiLanguage] = useState("en"); // UI language
-
-  // Form state
   const [formData, setFormData] = useState({
     name: "",
     age: "",
@@ -43,6 +43,70 @@ export default function OnboardingForm() {
     mood: "",
     crampSeverity: 5,
   });
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const fetchProfile = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/get-profile", {
+        method: "GET",
+        credentials: "include",
+      });
+
+      if (!res.ok) throw new Error("Failed");
+
+      const data = await res.json();
+      setFormData((prev) => ({
+        ...prev,
+
+        name: data.name ?? "",
+        age: data.age ?? "",
+        weight: data.weight ?? "",
+        language: data.language ?? "English",
+        bloodGroup: data.bloodGroup ?? "",
+        religion: data.religion ?? "",
+        state: data.state ?? "",
+        country: data.country ?? "India",
+        maritalStatus: data.maritalStatus ?? "",
+        firstPeriodAge: data.firstPeriodAge ?? "",
+        dietType: data.dietType ?? "",
+        allergies: data.allergies ?? [],
+        goals: data.goals ?? "",
+        preferredHealing: data.preferredHealing ?? [],
+        knownConditions: data.knownConditions ?? [],
+        period_start: data.period_start ?? "",
+        cycle_length: data.cycle_length ?? "28",
+        period_duration: data.period_duration ?? "5",
+        symptoms: data.symptoms ?? [],
+        mood: data.mood ?? "",
+        crampSeverity: data.crampSeverity ?? 5,
+      }));
+
+      // if (data.email !== user?.email) {
+      //   window.location.href = "/userdata";
+      //   return;
+      // }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, (firebaseUser) => {
+      if (firebaseUser.email) {
+        setUser(firebaseUser);
+        fetchProfile();
+      } else {
+      }
+    });
+
+    return () => unsub();
+  }, []);
+
+  // Form state
 
   // Translations
   const translations = {
@@ -682,12 +746,26 @@ export default function OnboardingForm() {
     setErrors({});
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validateStep(step)) {
-      console.log("Form submitted:", formData);
-      alert("Profile created successfully! 🎉");
-    }
+
+    if (!user) return;
+
+    if (!validateStep(step)) return;
+
+    const finalData = {
+      ...formData,
+      email: user.email,
+      uid: user.uid, // optional but recommended
+    };
+
+    await fetch("/api/save-profile", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(finalData),
+    });
+
+    alert("Profile created securely 🎉");
   };
 
   const handleChange = (field, value) => {
@@ -706,6 +784,28 @@ export default function OnboardingForm() {
   };
 
   const today = new Date().toISOString().split("T")[0];
+
+  if (loading) {
+    return (
+      <div
+        style={{ background: "#1a0a0e" }}
+        className="min-h-screen flex items-center justify-center"
+      >
+        <div className="text-center space-y-4">
+          <div
+            className="w-16 h-16 border-4 rounded-full animate-spin mx-auto"
+            style={{ borderColor: "#5c1a28", borderTopColor: "#c0392b" }}
+          />
+          <p
+            style={{ color: "#f5d0d8", fontFamily: "Georgia, serif" }}
+            className="text-lg"
+          >
+            Loading your wellness journey…
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-linear-to-br from-pink-200 via-lavender-100 to-gray-200 flex items-center justify-center p-4">
@@ -1329,8 +1429,8 @@ export default function OnboardingForm() {
                         {uiLanguage === "en"
                           ? "days"
                           : uiLanguage === "hi"
-                          ? "दिन"
-                          : "दिवस"}
+                            ? "दिन"
+                            : "दिवस"}
                       </span>
                     </p>
                   </div>

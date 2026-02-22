@@ -1,5 +1,7 @@
 "use client";
-import { ChevronDown, ChevronUp, Globe, Menu, X } from "lucide-react";
+import { auth } from "@/lib/firebase";
+import { onAuthStateChanged } from "firebase/auth";
+import { ChevronDown, ChevronUp, Globe, Menu, User, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState, useRef } from "react";
@@ -8,6 +10,19 @@ function NavBar({ setLanguage, language }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState(null); // For mobile and desktop submenu
   const navRef = useRef();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, (firebaseUser) => {
+      if (firebaseUser) {
+        setUser(firebaseUser);
+        console.log(firebaseUser);
+      } else {
+      }
+    });
+
+    return () => unsub();
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("language", language);
@@ -159,12 +174,28 @@ function NavBar({ setLanguage, language }) {
               <Globe className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-pink-600 pointer-events-none" />
             </div>
 
-            <button
-              onClick={() => (window.location.href = "/userauth")}
-              className="bg-pink-500 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
-            >
-              {t.signIn}
-            </button>
+            {user?.email ? (
+              <button
+                onClick={() => {
+                  window.location.href = `/dashboard`;
+                }}
+              >
+                <Image
+                  src={"/img/edu.png"}
+                  alt="img"
+                  className="bg-pink-100 h-10 w-10 rounded-full flex items-center"
+                  height={100}
+                  width={100}
+                />
+              </button>
+            ) : (
+              <button
+                onClick={() => (window.location.href = "/userauth")}
+                className="bg-pink-500 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+              >
+                {t.signIn}
+              </button>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -225,12 +256,23 @@ function NavBar({ setLanguage, language }) {
               ))}
             </select>
 
-            <button
-              onClick={() => (window.location.href = "/createaccount")}
-              className="w-full bg-linear-to-r from-pink-500 to-coral-500 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all"
-            >
-              {t.signIn}
-            </button>
+            {user?.email ? (
+              <button
+                onClick={() => {
+                  window.location.href = `/dashboard`;
+                }}
+                className="bg-pink-100 h-10 w-10 rounded-full flex items-center"
+              >
+                <User />
+              </button>
+            ) : (
+              <button
+                onClick={() => (window.location.href = "/createaccount")}
+                className="w-full bg-linear-to-r from-pink-500 to-coral-500 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all"
+              >
+                {t.signIn}
+              </button>
+            )}
           </div>
         )}
       </div>

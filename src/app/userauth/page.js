@@ -1,4 +1,13 @@
 "use client";
+
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+} from "firebase/auth";
+import { doc, setDoc, serverTimestamp } from "firebase/firestore";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import {
   Mail,
@@ -12,10 +21,12 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { auth, db } from "@/lib/firebase";
 
 export default function AuthForms() {
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -25,18 +36,79 @@ export default function AuthForms() {
 
   const languages = ["English", "हिन्दी", "Marathi"];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isLogin) {
-      alert(`welcome back to period care`);
-      window.location.href = "/dashbaord";
+
+    try {
+      let user;
+
+      // LOGIN
+      if (isLogin) {
+        const cred = await signInWithEmailAndPassword(
+          auth,
+          formData.email,
+          formData.password,
+        );
+
+        user = cred.user;
+      }
+      // SIGNUP
+      else {
+        const cred = await createUserWithEmailAndPassword(
+          auth,
+          formData.email,
+          formData.password,
+        );
+
+        user = cred.user;
+      }
+
+      // 🔥 ALWAYS ensure user document exists
+      await setDoc(
+        doc(db, "users", user.uid),
+        {
+          uid: user.uid,
+          name: user.displayName || formData.name || "",
+          email: user.email,
+          language: formData.language || "English",
+          lastLogin: serverTimestamp(),
+          createdAt: serverTimestamp(),
+        },
+        { merge: true }, // prevents overwrite
+      );
+
+      alert(isLogin ? "Welcome back 💗" : `Welcome ${formData.name} 🌸`);
+
+      router.push("/dashboard");
+    } catch (error) {
+      alert(error.message);
     }
-    alert(`welcome to period care ${formData.name}`);
-    window.location.href = "/userdata";
   };
 
-  const handleGoogleLogin = () => {
-    console.log("Google login clicked");
+  const handleGoogleLogin = async () => {
+    try {
+      const provider = new GoogleAuthProvider();
+
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+
+      // create user doc if not exists
+      await setDoc(
+        doc(db, "users", user.uid),
+        {
+          uid: user.uid,
+          name: user.displayName,
+          email: user.email,
+          language: "English",
+          createdAt: new Date(),
+        },
+        { merge: true },
+      );
+
+      router.push("/dashboard");
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   return (
@@ -203,7 +275,7 @@ export default function AuthForms() {
             </div>
 
             {/* Form Fields */}
-            <div className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-5">
               {/* Name field (only for signup) */}
               {!isLogin && (
                 <div>
@@ -341,13 +413,13 @@ export default function AuthForms() {
 
               {/* Submit Button */}
               <button
-                onClick={handleSubmit}
+                type="submit"
                 className="w-full bg-linear-to-r from-pink-400 to-rose-400 text-white font-semibold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-2 group"
               >
                 <span>{isLogin ? "Sign In" : "Create Account"}</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
               </button>
-            </div>
+            </form>
 
             {/* Footer */}
             <div className="mt-6 text-center">

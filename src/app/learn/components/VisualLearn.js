@@ -31,11 +31,7 @@ const translations = {
         hi: "कई भाषाओं में उपलब्ध",
         mr: "अनेक भाषांमध्ये उपलब्ध",
       },
-      offline: {
-        en: "Works offline after download",
-        hi: "डाउनलोड के बाद ऑफ़लाइन चलेगा",
-        mr: "डाउनलोड के नंतर ऑफलाइन काम करते",
-      },
+
       expertVerified: {
         en: "Expert verified content",
         hi: "विशेषज्ञ द्वारा सत्यापित",
@@ -236,7 +232,7 @@ export default function VisualLearningCarouselMultilingual({ language }) {
 
   const prevSlide = () => {
     setCurrentSlide(
-      (prev) => (prev - 1 + visualContent.length) % visualContent.length
+      (prev) => (prev - 1 + visualContent.length) % visualContent.length,
     );
   };
 
@@ -331,8 +327,8 @@ export default function VisualLearningCarouselMultilingual({ language }) {
                         t(
                           "visualContent.0.duration",
                           language,
-                          t(currentItem.duration, language)
-                        )
+                          t(currentItem.duration, language),
+                        ),
                       ).match(/\d+/)
                         ? "28"
                         : ""}
@@ -477,7 +473,7 @@ export default function VisualLearningCarouselMultilingual({ language }) {
                         className="flex-1 bg-linear-to-r from-pink-500 to-rose-500 text-white py-4 px-6 rounded-xl font-semibold hover:shadow-xl transition-all flex items-center justify-center space-x-2 group"
                         aria-label={t(
                           "ui.buttons.downloadInfographic",
-                          language
+                          language,
                         )}
                         // attach download handling in your app: onClick={() => handleDownload(currentItem)}
                       >

@@ -12,14 +12,16 @@ import {
   Maximize2,
   ChevronLeft,
 } from "lucide-react";
+import { usePathname } from "next/navigation";
 
-export default function AIChatbot({ lan }) {
+export default function AIChatbot({ lan, text }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [isOnline, setIsOnline] = useState(true);
   const [language, setLanguage] = useState(lan || "English");
   const [activeCategory, setActiveCategory] = useState("all");
   const [message, setMessage] = useState("");
+  const pathname = usePathname();
   const [messages, setMessages] = useState([
     {
       type: "bot",
@@ -255,26 +257,45 @@ This information helps personalize period, nutrition, and mood support for her.
   // Floating Widget (Closed State)
   if (!isOpen) {
     return (
-      <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50">
-        <button
-          onClick={() => setIsOpen(true)}
-          className="bg-linear-to-r from-pink-500 to-purple-500 text-white p-3 md:p-4 rounded-full shadow-2xl hover:shadow-pink-300 transition-all duration-300 transform hover:scale-110 active:scale-95 relative group"
-          aria-label="Open chat"
-        >
-          <MessageCircle className="w-6 h-6 md:w-7 md:h-7" />
-          <span className="absolute -top-1 -right-1 w-4 h-4 md:w-5 md:h-5 bg-red-500 rounded-full flex items-center justify-center text-[10px] md:text-xs font-bold animate-pulse">
-            1
-          </span>
+      <>
+        {pathname == "/dashboard" ? (
+          <>
+            <button
+              onClick={() => setIsOpen(true)}
+              className="py-3 px-6 rounded-full font-semibold transition-all hover:shadow-xl hover:scale-105 flex items-center gap-2"
+              style={{
+                background: "rgba(255,255,255,0.2)",
+                backdropFilter: "blur(8px)",
+                border: "1.5px solid rgba(255,255,255,0.4)",
+                color: "#fff",
+              }}
+            >
+              <MessageCircle className="w-5 h-5" /> {text}
+            </button>
+          </>
+        ) : (
+          <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50">
+            <button
+              onClick={() => setIsOpen(true)}
+              className="bg-linear-to-r from-pink-500 to-purple-500 text-white p-3 md:p-4 rounded-full shadow-2xl hover:shadow-pink-300 transition-all duration-300 transform hover:scale-110 active:scale-95 relative group"
+              aria-label="Open chat"
+            >
+              <MessageCircle className="w-6 h-6 md:w-7 md:h-7" />
+              <span className="absolute -top-1 -right-1 w-4 h-4 md:w-5 md:h-5 bg-red-500 rounded-full flex items-center justify-center text-[10px] md:text-xs font-bold animate-pulse">
+                1
+              </span>
 
-          {/* Tooltip - Hidden on mobile */}
-          <div className="hidden md:block absolute bottom-full right-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-            <div className="bg-gray-900 text-white px-4 py-2 rounded-lg text-sm whitespace-nowrap">
-              Chat with AI Assistant 💜
-              <div className="absolute top-full right-4 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-gray-900"></div>
-            </div>
+              {/* Tooltip - Hidden on mobile */}
+              <div className="hidden md:block absolute bottom-full right-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                <div className="bg-gray-900 text-white px-4 py-2 rounded-lg text-sm whitespace-nowrap">
+                  Chat with AI Assistant 💜
+                  <div className="absolute top-full right-4 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-gray-900"></div>
+                </div>
+              </div>
+            </button>
           </div>
-        </button>
-      </div>
+        )}
+      </>
     );
   }
 
@@ -453,7 +474,8 @@ This information helps personalize period, nutrition, and mood support for her.
           <div className="flex flex-wrap gap-1.5 md:gap-2">
             {quickQuestions
               .filter(
-                (q) => activeCategory === "all" || q.category === activeCategory
+                (q) =>
+                  activeCategory === "all" || q.category === activeCategory,
               )
               .slice(0, isMobile ? 2 : 3)
               .map((q, idx) => (

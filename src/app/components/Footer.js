@@ -54,7 +54,7 @@ export default function PeriodCareFooter({ language }) {
         location: "Nagpur, India",
       },
       footer: {
-        copyright: "© 2025 PeriodCare. Made with",
+        copyright: "© 2026 PeriodCare. Made with",
         team: "by Team GCOEY.",
         tagline: "Empowering Menstrual Health through AI & Awareness.",
       },
@@ -89,7 +89,7 @@ export default function PeriodCareFooter({ language }) {
         location: "नागपुर, भारत",
       },
       footer: {
-        copyright: "© 2025 PeriodCare. बनाया गया",
+        copyright: "© 2026 PeriodCare. बनाया गया",
         team: "टीम GCOEY द्वारा।",
         tagline: "AI और जागरूकता के माध्यम से मासिक स्वास्थ्य को सशक्त बनाना।",
       },
@@ -131,7 +131,7 @@ export default function PeriodCareFooter({ language }) {
         location: "नागपूर, भारत",
       },
       footer: {
-        copyright: "© 2025 PeriodCare. बनवले",
+        copyright: "© 2026 PeriodCare. बनवले",
         team: "टीम GCOEY द्वारे.",
         tagline: "AI आणि जागरूकतेद्वारे मासिक आरोग्य सशक्त करणे.",
       },

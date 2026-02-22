@@ -76,7 +76,7 @@ export default function EmergencyHelpMode() {
       title: "Offline Emergency Mode",
       subtitle:
         "Quick help for cramps, pain, or unexpected period issues—even without internet",
-      worksOffline: "Works Offline",
+
       emergencySteps: "Emergency Self-Help Steps",
 
       cards: {

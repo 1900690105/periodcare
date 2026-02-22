@@ -15,7 +15,7 @@ export default function PeriodCareHero({ language }) {
       learn: "Learn More",
       private: "100% Private",
       multi: "Multi-Language",
-      offline: "Works Offline",
+
       bot1: "Hello! How can I support you today? 💜",
     },
     hi: {
@@ -114,10 +114,6 @@ export default function PeriodCareHero({ language }) {
               <div className="flex items-center space-x-2">
                 <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                 <span className="text-gray-700 font-medium">{t.multi}</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                <span className="text-gray-700 font-medium">{t.offline}</span>
               </div>
             </div>
           </div>
