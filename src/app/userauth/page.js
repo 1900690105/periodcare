@@ -78,8 +78,12 @@ export default function AuthForms() {
       );
 
       alert(isLogin ? "Welcome back 💗" : `Welcome ${formData.name} 🌸`);
-
-      router.push("/dashboard");
+      if (isLogin) {
+        router.push("/dashboard");
+      } else {
+        setIsLogin(true);
+        router.push("/userauth");
+      }
     } catch (error) {
       alert(error.message);
     }

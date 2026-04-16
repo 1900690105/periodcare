@@ -199,7 +199,7 @@ export default function FeaturesSection({ language = "en" }) {
   const t = translations[language];
 
   return (
-    <div className="py-12 px-4 sm:px-6 lg:px-8">
+    <div className="py-12 px-4 sm:px-6 lg:px-8 -mt-30">
       {/* Header Section */}
       <div className="max-w-6xl mx-auto text-center mb-12">
         <div className="inline-block mb-4">

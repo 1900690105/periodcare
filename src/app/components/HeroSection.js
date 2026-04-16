@@ -129,12 +129,6 @@ export default function PeriodCareHero({ language }) {
                 height={700}
               />
             </div>
-            <div className="absolute -top-4 -right-4 bg-white rounded-full p-4 shadow-lg animate-bounce">
-              <Sparkles className="w-8 h-8 text-pink-500" />
-            </div>
-            <div className="absolute -bottom-4 -left-4 bg-white rounded-full p-4 shadow-lg">
-              <Heart className="w-8 h-8 text-purple-500" />
-            </div>
           </div>
         </div>
       </div>

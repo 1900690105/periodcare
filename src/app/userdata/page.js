@@ -60,27 +60,27 @@ export default function OnboardingForm() {
       setFormData((prev) => ({
         ...prev,
 
-        name: data.name ?? "",
-        age: data.age ?? "",
-        weight: data.weight ?? "",
-        language: data.language ?? "English",
-        bloodGroup: data.bloodGroup ?? "",
-        religion: data.religion ?? "",
-        state: data.state ?? "",
-        country: data.country ?? "India",
-        maritalStatus: data.maritalStatus ?? "",
-        firstPeriodAge: data.firstPeriodAge ?? "",
-        dietType: data.dietType ?? "",
-        allergies: data.allergies ?? [],
-        goals: data.goals ?? "",
-        preferredHealing: data.preferredHealing ?? [],
-        knownConditions: data.knownConditions ?? [],
-        period_start: data.period_start ?? "",
-        cycle_length: data.cycle_length ?? "28",
-        period_duration: data.period_duration ?? "5",
-        symptoms: data.symptoms ?? [],
-        mood: data.mood ?? "",
-        crampSeverity: data.crampSeverity ?? 5,
+        name: data?.name ?? "",
+        age: data?.age ?? "",
+        weight: data?.weight ?? "",
+        language: data?.language ?? "English",
+        bloodGroup: data?.bloodGroup ?? "",
+        religion: data?.religion ?? "",
+        state: data?.state ?? "",
+        country: data?.country ?? "India",
+        maritalStatus: data?.maritalStatus ?? "",
+        firstPeriodAge: data?.firstPeriodAge ?? "",
+        dietType: data?.dietType ?? "",
+        allergies: data?.allergies ?? [],
+        goals: data?.goals ?? "",
+        preferredHealing: data?.preferredHealing ?? [],
+        knownConditions: data?.knownConditions ?? [],
+        period_start: data?.period_start ?? "",
+        cycle_length: data?.cycle_length ?? "28",
+        period_duration: data?.period_duration ?? "5",
+        symptoms: data?.symptoms ?? [],
+        mood: data?.mood ?? "",
+        crampSeverity: data?.crampSeverity ?? 5,
       }));
 
       // if (data.email !== user?.email) {
@@ -1463,6 +1463,9 @@ export default function OnboardingForm() {
               ) : (
                 <button
                   type="submit"
+                  onClick={() => {
+                    window.location.href = "/dashboard";
+                  }}
                   className="ml-auto flex items-center space-x-2 px-8 py-3 bg-linear-to-r from-green-500 to-emerald-500 text-white rounded-xl font-semibold hover:shadow-lg transition-all transform hover:scale-105 text-lg"
                 >
                   <CheckCircle className="w-5 h-5" />

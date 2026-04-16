@@ -11,7 +11,7 @@ https://github.com/1900690105/periodcare (download zip file and extract)
 
 step4:install this in backend
     i) pip install fastapi uvicorn chromadb sentence-transformers PyPDF2 google.generativeai
-   ii) 
+   
 
 step5:in backend forlder
     i) https://ollama.com/download/windows

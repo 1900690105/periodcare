@@ -541,7 +541,10 @@ export default function UserDashboard() {
         >
           <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between flex-wrap gap-2">
             <span
-              className="text-xs font-semibold tracking-widest uppercase"
+              onClick={() => {
+                window.location.href = "/";
+              }}
+              className="text-xs font-semibold tracking-widest uppercase cursor-pointer"
               style={{ color: "var(--phase-text-muted)" }}
             >
               PeriodCareForYou
@@ -679,6 +682,15 @@ export default function UserDashboard() {
                 )}
 
                 <AIChatbot lan={"english"} text={"Chat with PeriodCare AI"} />
+
+                <button
+                  onClick={() => {
+                    window.location.href = "/userdata";
+                  }}
+                  className="bg-amber-500 p-2 w-44 rounded-lg"
+                >
+                  Add Personal details +
+                </button>
               </div>
 
               {/* Circular tracker */}

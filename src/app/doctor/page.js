@@ -166,7 +166,7 @@ export default function DoctorConsultation() {
     const matchesLanguage =
       selectedLanguage === "all" ||
       doctor.languages.some(
-        (lang) => lang.toLowerCase() === selectedLanguage.toLowerCase()
+        (lang) => lang.toLowerCase() === selectedLanguage.toLowerCase(),
       );
     const matchesGender =
       selectedGender === "all" ||
@@ -361,7 +361,7 @@ export default function DoctorConsultation() {
               {/* Card Header */}
               <div
                 className={`bg-linear-to-r ${getSpecializationColor(
-                  doctor.specialization
+                  doctor.specialization,
                 )} p-6 relative`}
               >
                 {doctor.available_today && (
@@ -442,7 +442,12 @@ export default function DoctorConsultation() {
                     <Calendar className="w-4 h-4" />
                     <span>Book Now</span>
                   </button>
-                  <button className="bg-pink-50 text-pink-600 py-3 rounded-xl font-semibold hover:bg-pink-100 transition-all flex items-center justify-center space-x-2">
+                  <button
+                    onClick={() => {
+                      window.location.href = `/doctor/profile`;
+                    }}
+                    className="bg-pink-50 text-pink-600 py-3 rounded-xl font-semibold hover:bg-pink-100 transition-all flex items-center justify-center space-x-2"
+                  >
                     <span>View Profile</span>
                     <ChevronRight className="w-4 h-4" />
                   </button>
@@ -487,7 +492,7 @@ export default function DoctorConsultation() {
             {/* Modal Header */}
             <div
               className={`bg-linear-to-r ${getSpecializationColor(
-                selectedDoctor.specialization
+                selectedDoctor.specialization,
               )} p-6 relative`}
             >
               <button
